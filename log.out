@@ -1,0 +1,398 @@
+Adding [systemProperties] PropertySource with lowest search precedence
+Adding [systemEnvironment] PropertySource with lowest search precedence
+Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@64bfbc86: startup date [Sun Aug 28 16:53:17 CDT 2016]; root of context hierarchy
+Adding [systemProperties] PropertySource with lowest search precedence
+Adding [systemEnvironment] PropertySource with lowest search precedence
+Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+Loading XML bean definitions from class path resource [test-application-context.xml]
+Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+Loading schema mappings from [META-INF/spring.schemas]
+Loaded schema mappings: {http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-4.1.xsd=org/springframework/aop/config/spring-aop-4.1.xsd, http://www.springframework.org/schema/context/spring-context-3.1.xsd=org/springframework/context/config/spring-context-3.1.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd=org/springframework/jdbc/config/spring-jdbc-4.1.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd=org/springframework/web/servlet/config/spring-mvc-4.1.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-4.1.xsd, http://www.springframework.org/schema/aop/spring-aop-3.2.xsd=org/springframework/aop/config/spring-aop-3.2.xsd, http://www.springframework.org/schema/lang/spring-lang-4.1.xsd=org/springframework/scripting/config/spring-lang-4.1.xsd, http://www.springframework.org/schema/context/spring-context-4.0.xsd=org/springframework/context/config/spring-context-4.0.xsd, http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd=org/springframework/web/servlet/config/spring-mvc-3.2.xsd, http://www.springframework.org/schema/tool/spring-tool-4.1.xsd=org/springframework/beans/factory/xml/spring-tool-4.1.xsd, http://www.springframework.org/schema/lang/spring-lang-3.2.xsd=org/springframework/scripting/config/spring-lang-3.2.xsd, http://www.springframework.org/schema/cache/spring-cache-3.2.xsd=org/springframework/cache/config/spring-cache-3.2.xsd, http://www.springframework.org/schema/jee/spring-jee-4.1.xsd=org/springframework/ejb/config/spring-jee-4.1.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd=org/springframework/jdbc/config/spring-jdbc-3.1.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-3.2.xsd=org/springframework/beans/factory/xml/spring-tool-3.2.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-4.1.xsd, http://www.springframework.org/schema/cache/spring-cache-4.1.xsd=org/springframework/cache/config/spring-cache-4.1.xsd, http://www.springframework.org/schema/aop/spring-aop-4.0.xsd=org/springframework/aop/config/spring-aop-4.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.2.xsd=org/springframework/ejb/config/spring-jee-3.2.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd=org/springframework/jdbc/config/spring-jdbc-4.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd=org/springframework/web/servlet/config/spring-mvc-4.0.xsd, http://www.springframework.org/schema/beans/spring-beans-3.2.xsd=org/springframework/beans/factory/xml/spring-beans-3.2.xsd, http://www.springframework.org/schema/aop/spring-aop-3.1.xsd=org/springframework/aop/config/spring-aop-3.1.xsd, http://www.springframework.org/schema/lang/spring-lang-4.0.xsd=org/springframework/scripting/config/spring-lang-4.0.xsd, http://www.springframework.org/schema/mvc/spring-mvc.xsd=org/springframework/web/servlet/config/spring-mvc-4.1.xsd, http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd=org/springframework/web/servlet/config/spring-mvc-3.1.xsd, http://www.springframework.org/schema/beans/spring-beans-4.1.xsd=org/springframework/beans/factory/xml/spring-beans-4.1.xsd, http://www.springframework.org/schema/tool/spring-tool-4.0.xsd=org/springframework/beans/factory/xml/spring-tool-4.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.1.xsd=org/springframework/scripting/config/spring-lang-3.1.xsd, http://www.springframework.org/schema/tx/spring-tx-3.2.xsd=org/springframework/transaction/config/spring-tx-3.2.xsd, http://www.springframework.org/schema/cache/spring-cache-3.1.xsd=org/springframework/cache/config/spring-cache-3.1.xsd, http://www.springframework.org/schema/jee/spring-jee-4.0.xsd=org/springframework/ejb/config/spring-jee-4.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/task/spring-task-4.1.xsd=org/springframework/scheduling/config/spring-task-4.1.xsd, http://www.springframework.org/schema/tool/spring-tool-3.1.xsd=org/springframework/beans/factory/xml/spring-tool-3.1.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-4.1.xsd, http://www.springframework.org/schema/tx/spring-tx-4.1.xsd=org/springframework/transaction/config/spring-tx-4.1.xsd, http://www.springframework.org/schema/cache/spring-cache-4.0.xsd=org/springframework/cache/config/spring-cache-4.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.1.xsd=org/springframework/ejb/config/spring-jee-3.1.xsd, http://www.springframework.org/schema/task/spring-task-3.2.xsd=org/springframework/scheduling/config/spring-task-3.2.xsd, http://www.springframework.org/schema/beans/spring-beans-3.1.xsd=org/springframework/beans/factory/xml/spring-beans-3.1.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-4.1.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd=org/springframework/web/servlet/config/spring-mvc-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-4.0.xsd=org/springframework/beans/factory/xml/spring-beans-4.0.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-4.1.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.1.xsd=org/springframework/transaction/config/spring-tx-3.1.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/task/spring-task-4.0.xsd=org/springframework/scheduling/config/spring-task-4.0.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-4.0.xsd=org/springframework/transaction/config/spring-tx-4.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/util/spring-util-4.1.xsd=org/springframework/beans/factory/xml/spring-util-4.1.xsd, http://www.springframework.org/schema/task/spring-task-3.1.xsd=org/springframework/scheduling/config/spring-task-3.1.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-4.1.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/util/spring-util-3.2.xsd=org/springframework/beans/factory/xml/spring-util-3.2.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-4.1.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/util/spring-util-4.0.xsd=org/springframework/beans/factory/xml/spring-util-4.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-4.1.xsd, http://www.springframework.org/schema/context/spring-context-3.2.xsd=org/springframework/context/config/spring-context-3.2.xsd, http://www.springframework.org/schema/util/spring-util-3.1.xsd=org/springframework/beans/factory/xml/spring-util-3.1.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/cache/spring-cache.xsd=org/springframework/cache/config/spring-cache-4.1.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-4.1.xsd, http://www.springframework.org/schema/context/spring-context-4.1.xsd=org/springframework/context/config/spring-context-4.1.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd=org/springframework/jdbc/config/spring-jdbc-3.2.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-4.1.xsd}
+Found XML schema [http://www.springframework.org/schema/beans/spring-beans.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-4.1.xsd
+Found XML schema [http://www.springframework.org/schema/context/spring-context-4.0.xsd] in classpath: org/springframework/context/config/spring-context-4.0.xsd
+Found XML schema [http://www.springframework.org/schema/tool/spring-tool-4.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-4.0.xsd
+Loading bean definitions
+Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/mvc=org.springframework.web.servlet.config.MvcNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/cache=org.springframework.cache.config.CacheNamespaceHandler, http://www.springframework.org/schema/c=org.springframework.beans.factory.xml.SimpleConstructorNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+Adding [systemProperties] PropertySource with lowest search precedence
+Adding [systemEnvironment] PropertySource with lowest search precedence
+Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+Looking for matching resources in directory tree [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh]
+Searching directory [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh] for files matching pattern [C:/workspaces/lhbh/lhbh/target/test-classes/org/jeff/projs/ihbh/**/*.class]
+Searching directory [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data] for files matching pattern [C:/workspaces/lhbh/lhbh/target/test-classes/org/jeff/projs/ihbh/**/*.class]
+Searching directory [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\daos] for files matching pattern [C:/workspaces/lhbh/lhbh/target/test-classes/org/jeff/projs/ihbh/**/*.class]
+Searching directory [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\database] for files matching pattern [C:/workspaces/lhbh/lhbh/target/test-classes/org/jeff/projs/ihbh/**/*.class]
+Searching directory [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\services] for files matching pattern [C:/workspaces/lhbh/lhbh/target/test-classes/org/jeff/projs/ihbh/**/*.class]
+Looking for matching resources in directory tree [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh]
+Searching directory [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh] for files matching pattern [C:/workspaces/lhbh/lhbh/target/classes/org/jeff/projs/ihbh/**/*.class]
+Searching directory [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data] for files matching pattern [C:/workspaces/lhbh/lhbh/target/classes/org/jeff/projs/ihbh/**/*.class]
+Searching directory [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos] for files matching pattern [C:/workspaces/lhbh/lhbh/target/classes/org/jeff/projs/ihbh/**/*.class]
+Searching directory [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl] for files matching pattern [C:/workspaces/lhbh/lhbh/target/classes/org/jeff/projs/ihbh/**/*.class]
+Searching directory [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\domains] for files matching pattern [C:/workspaces/lhbh/lhbh/target/classes/org/jeff/projs/ihbh/**/*.class]
+Searching directory [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\model] for files matching pattern [C:/workspaces/lhbh/lhbh/target/classes/org/jeff/projs/ihbh/**/*.class]
+Searching directory [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services] for files matching pattern [C:/workspaces/lhbh/lhbh/target/classes/org/jeff/projs/ihbh/**/*.class]
+Searching directory [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\impl] for files matching pattern [C:/workspaces/lhbh/lhbh/target/classes/org/jeff/projs/ihbh/**/*.class]
+Searching directory [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\utils] for files matching pattern [C:/workspaces/lhbh/lhbh/target/classes/org/jeff/projs/ihbh/**/*.class]
+Resolved location pattern [classpath*:org/jeff/projs/ihbh/**/*.class] to resources [file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\daos\TestDaoHelper.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\daos\TestDaoImpls.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\daos\TestDaoSuite.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\daos\TestMySqlAuthorDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\daos\TestMySqlCategoryDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\daos\TestMySqlCategoryDetailDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\daos\TestMySqlHymnalDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\daos\TestMySqlHymnDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\daos\TestMySqlMeterDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\daos\TestMySqlSaveStateDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\daos\TestMySqlTunesDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\daos\TestMySqlUsersDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\daos\TestMySqlUserTypesDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\daos\TestTunesDao.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\database\Authors.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\database\Categories.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\database\Hymnals.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\database\Meters.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\database\Tunes.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\data\database\UserTypes.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\services\TestLookupService.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\TestAll.class], file [C:\workspaces\lhbh\lhbh\target\test-classes\org\jeff\projs\ihbh\TestMessage.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\AuthorDAO.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\CategoryDAO.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\CategoryDetailDAO.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\HymnalDAO.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\HymnDAO.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlAuthorDaoImpl$AuthorMapper.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlAuthorDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlCategoryDaoImpl$CategoryMapper.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlCategoryDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlCategoryDetailDaoImpl$CategoryDetailMapper.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlCategoryDetailDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlHymnalDaoImpl$HymnalMapper.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlHymnalDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlHymnDaoImpl$HymnMapper.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlHymnDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlLookupDAOImpl$1.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlLookupDAOImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlMeterDaoImpl$MeterMapper.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlMeterDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlSaveStateDaoImpl$SaveStateMapper.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlSaveStateDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlTuneDaoImpl$1.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlTuneDaoImpl$MeterMapper.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlTuneDaoImpl$TunesMapper.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlTuneDaoImpl$TunesWholeMapper.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlTuneDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlUserDaoImpl$UserMapper.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlUserDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlUserTypeDaoImpl$1.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlUserTypeDaoImpl$UserTypeMapper.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlUserTypeDaoImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\LookupDAO.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\MeterDAO.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\SaveStateDAO.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\TunesDAO.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\UsersDAO.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\UserTypesDAO.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\domains\AuthorDto.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\domains\BaseDto.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\domains\Book.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\domains\CategoryDetailDto.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\domains\CategoryDto.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\domains\CategoryTreeDto.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\domains\HymnalDto.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\domains\HymnDto.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\domains\MeterDto.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\domains\SaveStateDto.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\domains\TuneDto.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\domains\UserDto.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\domains\UserTypeDto.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\model\AdminMenu.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\AuthorService.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\BaseService.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\CategoryService.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\HymnalService.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\HymnService.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\impl\AuthorServiceImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\impl\HymnalServiceImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\impl\LookupServiceImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\impl\MeterServiceImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\impl\TuneServiceImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\impl\UserTypeServiceImpl.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\LookupService.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\MeterService.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\SaveStateService.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\TuneService.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\UserService.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\UserTypeService.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\utils\CategoryTree.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\utils\Constants.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\utils\DatabaseLog4jLevel.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\utils\EqualsHelper.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\utils\HtmlMessageUtils.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\utils\MessageUtils.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\utils\SecurityHelper.class], file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\utils\SessionUtil.class]]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlAuthorDaoImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlCategoryDaoImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlCategoryDetailDaoImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlHymnalDaoImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlHymnDaoImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlLookupDAOImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlMeterDaoImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlSaveStateDaoImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlTuneDaoImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlUserDaoImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\data\daos\impl\MySqlUserTypeDaoImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\impl\AuthorServiceImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\impl\HymnalServiceImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\impl\LookupServiceImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\impl\MeterServiceImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\impl\TuneServiceImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\services\impl\UserTypeServiceImpl.class]
+Identified candidate component class: file [C:\workspaces\lhbh\lhbh\target\classes\org\jeff\projs\ihbh\utils\MessageUtils.class]
+Loaded 24 bean definitions from location pattern [test-application-context.xml]
+Bean factory for org.springframework.context.support.ClassPathXmlApplicationContext@64bfbc86: org.springframework.beans.factory.support.DefaultListableBeanFactory@3541cb24: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,authorDaoImpl,categoryDaoImpl,categoryDetailDaoImpl,hymnalDaoImpl,hymnDaoImpl,lookupDAOImpl,meterDaoImpl,saveStateDaoImpl,tuneDaoImpl,userDaoImpl,userTypeDaoImpl,authorsServiceImpl,hymnalServiceImpl,lookupService,meterServiceImpl,tuneServiceImpl,userTypeServiceImpl,messageUtils,dataSource,messageSource]; root of factory hierarchy
+Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+Creating instance of bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+Eagerly caching bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor' to allow for resolving potential circular references
+Finished creating instance of bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+Creating instance of bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+Eagerly caching bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor' to allow for resolving potential circular references
+Finished creating instance of bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+Creating shared instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+Creating instance of bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+Eagerly caching bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor' to allow for resolving potential circular references
+Finished creating instance of bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+Creating instance of bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+Eagerly caching bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor' to allow for resolving potential circular references
+Finished creating instance of bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+Creating shared instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+Creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+Eagerly caching bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor' to allow for resolving potential circular references
+Finished creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+Creating shared instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+Creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+Eagerly caching bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor' to allow for resolving potential circular references
+Finished creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+Creating shared instance of singleton bean 'messageSource'
+Creating instance of bean 'messageSource'
+Eagerly caching bean 'messageSource' to allow for resolving potential circular references
+Finished creating instance of bean 'messageSource'
+Using MessageSource [org.springframework.context.support.ResourceBundleMessageSource: basenames=[ju-messages,db-messages]]
+Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@31edaa7d]
+Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3541cb24: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,authorDaoImpl,categoryDaoImpl,categoryDetailDaoImpl,hymnalDaoImpl,hymnDaoImpl,lookupDAOImpl,meterDaoImpl,saveStateDaoImpl,tuneDaoImpl,userDaoImpl,userTypeDaoImpl,authorsServiceImpl,hymnalServiceImpl,lookupService,meterServiceImpl,tuneServiceImpl,userTypeServiceImpl,messageUtils,dataSource,messageSource,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor]; root of factory hierarchy
+Returning cached instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+Returning cached instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+Returning cached instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+Returning cached instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+Creating shared instance of singleton bean 'authorDaoImpl'
+Creating instance of bean 'authorDaoImpl'
+Registered injected element on class [org.jeff.projs.ihbh.data.daos.impl.MySqlAuthorDaoImpl]: AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlAuthorDaoImpl.setDataSource(javax.sql.DataSource)
+Eagerly caching bean 'authorDaoImpl' to allow for resolving potential circular references
+Processing injected method of bean 'authorDaoImpl': AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlAuthorDaoImpl.setDataSource(javax.sql.DataSource)
+Creating shared instance of singleton bean 'dataSource'
+Creating instance of bean 'dataSource'
+Eagerly caching bean 'dataSource' to allow for resolving potential circular references
+Finished creating instance of bean 'dataSource'
+Autowiring by type from bean name 'authorDaoImpl' to bean named 'dataSource'
+Finished creating instance of bean 'authorDaoImpl'
+Creating shared instance of singleton bean 'categoryDaoImpl'
+Creating instance of bean 'categoryDaoImpl'
+Registered injected element on class [org.jeff.projs.ihbh.data.daos.impl.MySqlCategoryDaoImpl]: AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlCategoryDaoImpl.setDataSource(javax.sql.DataSource)
+Eagerly caching bean 'categoryDaoImpl' to allow for resolving potential circular references
+Processing injected method of bean 'categoryDaoImpl': AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlCategoryDaoImpl.setDataSource(javax.sql.DataSource)
+Returning cached instance of singleton bean 'dataSource'
+Autowiring by type from bean name 'categoryDaoImpl' to bean named 'dataSource'
+Finished creating instance of bean 'categoryDaoImpl'
+Creating shared instance of singleton bean 'categoryDetailDaoImpl'
+Creating instance of bean 'categoryDetailDaoImpl'
+Registered injected element on class [org.jeff.projs.ihbh.data.daos.impl.MySqlCategoryDetailDaoImpl]: AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlCategoryDetailDaoImpl.setDataSource(javax.sql.DataSource)
+Eagerly caching bean 'categoryDetailDaoImpl' to allow for resolving potential circular references
+Processing injected method of bean 'categoryDetailDaoImpl': AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlCategoryDetailDaoImpl.setDataSource(javax.sql.DataSource)
+Returning cached instance of singleton bean 'dataSource'
+Autowiring by type from bean name 'categoryDetailDaoImpl' to bean named 'dataSource'
+Finished creating instance of bean 'categoryDetailDaoImpl'
+Creating shared instance of singleton bean 'hymnalDaoImpl'
+Creating instance of bean 'hymnalDaoImpl'
+Registered injected element on class [org.jeff.projs.ihbh.data.daos.impl.MySqlHymnalDaoImpl]: AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlHymnalDaoImpl.setDataSource(javax.sql.DataSource)
+Eagerly caching bean 'hymnalDaoImpl' to allow for resolving potential circular references
+Processing injected method of bean 'hymnalDaoImpl': AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlHymnalDaoImpl.setDataSource(javax.sql.DataSource)
+Returning cached instance of singleton bean 'dataSource'
+Autowiring by type from bean name 'hymnalDaoImpl' to bean named 'dataSource'
+Finished creating instance of bean 'hymnalDaoImpl'
+Creating shared instance of singleton bean 'hymnDaoImpl'
+Creating instance of bean 'hymnDaoImpl'
+Registered injected element on class [org.jeff.projs.ihbh.data.daos.impl.MySqlHymnDaoImpl]: AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlHymnDaoImpl.setDataSource(javax.sql.DataSource)
+Eagerly caching bean 'hymnDaoImpl' to allow for resolving potential circular references
+Processing injected method of bean 'hymnDaoImpl': AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlHymnDaoImpl.setDataSource(javax.sql.DataSource)
+Returning cached instance of singleton bean 'dataSource'
+Autowiring by type from bean name 'hymnDaoImpl' to bean named 'dataSource'
+Finished creating instance of bean 'hymnDaoImpl'
+Creating shared instance of singleton bean 'lookupDAOImpl'
+Creating instance of bean 'lookupDAOImpl'
+Registered injected element on class [org.jeff.projs.ihbh.data.daos.impl.MySqlLookupDAOImpl]: AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlLookupDAOImpl.setDataSource(javax.sql.DataSource)
+Eagerly caching bean 'lookupDAOImpl' to allow for resolving potential circular references
+Processing injected method of bean 'lookupDAOImpl': AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlLookupDAOImpl.setDataSource(javax.sql.DataSource)
+Returning cached instance of singleton bean 'dataSource'
+Autowiring by type from bean name 'lookupDAOImpl' to bean named 'dataSource'
+Finished creating instance of bean 'lookupDAOImpl'
+Creating shared instance of singleton bean 'meterDaoImpl'
+Creating instance of bean 'meterDaoImpl'
+Registered injected element on class [org.jeff.projs.ihbh.data.daos.impl.MySqlMeterDaoImpl]: AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlMeterDaoImpl.setDataSource(javax.sql.DataSource)
+Eagerly caching bean 'meterDaoImpl' to allow for resolving potential circular references
+Processing injected method of bean 'meterDaoImpl': AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlMeterDaoImpl.setDataSource(javax.sql.DataSource)
+Returning cached instance of singleton bean 'dataSource'
+Autowiring by type from bean name 'meterDaoImpl' to bean named 'dataSource'
+Finished creating instance of bean 'meterDaoImpl'
+Creating shared instance of singleton bean 'saveStateDaoImpl'
+Creating instance of bean 'saveStateDaoImpl'
+Registered injected element on class [org.jeff.projs.ihbh.data.daos.impl.MySqlSaveStateDaoImpl]: AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlSaveStateDaoImpl.setDataSource(javax.sql.DataSource)
+Eagerly caching bean 'saveStateDaoImpl' to allow for resolving potential circular references
+Processing injected method of bean 'saveStateDaoImpl': AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlSaveStateDaoImpl.setDataSource(javax.sql.DataSource)
+Returning cached instance of singleton bean 'dataSource'
+Autowiring by type from bean name 'saveStateDaoImpl' to bean named 'dataSource'
+Finished creating instance of bean 'saveStateDaoImpl'
+Creating shared instance of singleton bean 'tuneDaoImpl'
+Creating instance of bean 'tuneDaoImpl'
+Registered injected element on class [org.jeff.projs.ihbh.data.daos.impl.MySqlTuneDaoImpl]: AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlTuneDaoImpl.setDataSource(javax.sql.DataSource)
+Eagerly caching bean 'tuneDaoImpl' to allow for resolving potential circular references
+Processing injected method of bean 'tuneDaoImpl': AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlTuneDaoImpl.setDataSource(javax.sql.DataSource)
+Returning cached instance of singleton bean 'dataSource'
+Autowiring by type from bean name 'tuneDaoImpl' to bean named 'dataSource'
+Finished creating instance of bean 'tuneDaoImpl'
+Creating shared instance of singleton bean 'userDaoImpl'
+Creating instance of bean 'userDaoImpl'
+Registered injected element on class [org.jeff.projs.ihbh.data.daos.impl.MySqlUserDaoImpl]: AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlUserDaoImpl.setDataSource(javax.sql.DataSource)
+Eagerly caching bean 'userDaoImpl' to allow for resolving potential circular references
+Processing injected method of bean 'userDaoImpl': AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlUserDaoImpl.setDataSource(javax.sql.DataSource)
+Returning cached instance of singleton bean 'dataSource'
+Autowiring by type from bean name 'userDaoImpl' to bean named 'dataSource'
+Finished creating instance of bean 'userDaoImpl'
+Creating shared instance of singleton bean 'userTypeDaoImpl'
+Creating instance of bean 'userTypeDaoImpl'
+Registered injected element on class [org.jeff.projs.ihbh.data.daos.impl.MySqlUserTypeDaoImpl]: AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlUserTypeDaoImpl.setDataSource(javax.sql.DataSource)
+Eagerly caching bean 'userTypeDaoImpl' to allow for resolving potential circular references
+Processing injected method of bean 'userTypeDaoImpl': AutowiredMethodElement for public void org.jeff.projs.ihbh.data.daos.impl.MySqlUserTypeDaoImpl.setDataSource(javax.sql.DataSource)
+Returning cached instance of singleton bean 'dataSource'
+Autowiring by type from bean name 'userTypeDaoImpl' to bean named 'dataSource'
+Finished creating instance of bean 'userTypeDaoImpl'
+Creating shared instance of singleton bean 'authorsServiceImpl'
+Creating instance of bean 'authorsServiceImpl'
+Registered injected element on class [org.jeff.projs.ihbh.services.impl.AuthorServiceImpl]: AutowiredFieldElement for org.jeff.projs.ihbh.data.daos.impl.MySqlAuthorDaoImpl org.jeff.projs.ihbh.services.impl.AuthorServiceImpl.authorDaoImpl
+Eagerly caching bean 'authorsServiceImpl' to allow for resolving potential circular references
+Processing injected method of bean 'authorsServiceImpl': AutowiredFieldElement for org.jeff.projs.ihbh.data.daos.impl.MySqlAuthorDaoImpl org.jeff.projs.ihbh.services.impl.AuthorServiceImpl.authorDaoImpl
+Returning cached instance of singleton bean 'authorDaoImpl'
+Autowiring by type from bean name 'authorsServiceImpl' to bean named 'authorDaoImpl'
+Finished creating instance of bean 'authorsServiceImpl'
+Creating shared instance of singleton bean 'hymnalServiceImpl'
+Creating instance of bean 'hymnalServiceImpl'
+Registered injected element on class [org.jeff.projs.ihbh.services.impl.HymnalServiceImpl]: AutowiredFieldElement for org.jeff.projs.ihbh.data.daos.impl.MySqlHymnalDaoImpl org.jeff.projs.ihbh.services.impl.HymnalServiceImpl.hymnalDaoImpl
+Eagerly caching bean 'hymnalServiceImpl' to allow for resolving potential circular references
+Processing injected method of bean 'hymnalServiceImpl': AutowiredFieldElement for org.jeff.projs.ihbh.data.daos.impl.MySqlHymnalDaoImpl org.jeff.projs.ihbh.services.impl.HymnalServiceImpl.hymnalDaoImpl
+Returning cached instance of singleton bean 'hymnalDaoImpl'
+Autowiring by type from bean name 'hymnalServiceImpl' to bean named 'hymnalDaoImpl'
+Finished creating instance of bean 'hymnalServiceImpl'
+Creating shared instance of singleton bean 'lookupService'
+Creating instance of bean 'lookupService'
+Registered injected element on class [org.jeff.projs.ihbh.services.impl.LookupServiceImpl]: AutowiredFieldElement for org.jeff.projs.ihbh.data.daos.impl.MySqlLookupDAOImpl org.jeff.projs.ihbh.services.impl.LookupServiceImpl.lookupDAOImpl
+Eagerly caching bean 'lookupService' to allow for resolving potential circular references
+Processing injected method of bean 'lookupService': AutowiredFieldElement for org.jeff.projs.ihbh.data.daos.impl.MySqlLookupDAOImpl org.jeff.projs.ihbh.services.impl.LookupServiceImpl.lookupDAOImpl
+Returning cached instance of singleton bean 'lookupDAOImpl'
+Autowiring by type from bean name 'lookupService' to bean named 'lookupDAOImpl'
+Finished creating instance of bean 'lookupService'
+Creating shared instance of singleton bean 'meterServiceImpl'
+Creating instance of bean 'meterServiceImpl'
+Registered injected element on class [org.jeff.projs.ihbh.services.impl.MeterServiceImpl]: AutowiredFieldElement for org.jeff.projs.ihbh.data.daos.impl.MySqlMeterDaoImpl org.jeff.projs.ihbh.services.impl.MeterServiceImpl.meterDaoImpl
+Eagerly caching bean 'meterServiceImpl' to allow for resolving potential circular references
+Processing injected method of bean 'meterServiceImpl': AutowiredFieldElement for org.jeff.projs.ihbh.data.daos.impl.MySqlMeterDaoImpl org.jeff.projs.ihbh.services.impl.MeterServiceImpl.meterDaoImpl
+Returning cached instance of singleton bean 'meterDaoImpl'
+Autowiring by type from bean name 'meterServiceImpl' to bean named 'meterDaoImpl'
+Finished creating instance of bean 'meterServiceImpl'
+Creating shared instance of singleton bean 'tuneServiceImpl'
+Creating instance of bean 'tuneServiceImpl'
+Registered injected element on class [org.jeff.projs.ihbh.services.impl.TuneServiceImpl]: AutowiredFieldElement for org.jeff.projs.ihbh.data.daos.impl.MySqlTuneDaoImpl org.jeff.projs.ihbh.services.impl.TuneServiceImpl.tuneDaoImpl
+Eagerly caching bean 'tuneServiceImpl' to allow for resolving potential circular references
+Processing injected method of bean 'tuneServiceImpl': AutowiredFieldElement for org.jeff.projs.ihbh.data.daos.impl.MySqlTuneDaoImpl org.jeff.projs.ihbh.services.impl.TuneServiceImpl.tuneDaoImpl
+Returning cached instance of singleton bean 'tuneDaoImpl'
+Autowiring by type from bean name 'tuneServiceImpl' to bean named 'tuneDaoImpl'
+Finished creating instance of bean 'tuneServiceImpl'
+Creating shared instance of singleton bean 'userTypeServiceImpl'
+Creating instance of bean 'userTypeServiceImpl'
+Registered injected element on class [org.jeff.projs.ihbh.services.impl.UserTypeServiceImpl]: AutowiredFieldElement for org.jeff.projs.ihbh.data.daos.impl.MySqlUserTypeDaoImpl org.jeff.projs.ihbh.services.impl.UserTypeServiceImpl.userTypeDaoImpl
+Eagerly caching bean 'userTypeServiceImpl' to allow for resolving potential circular references
+Processing injected method of bean 'userTypeServiceImpl': AutowiredFieldElement for org.jeff.projs.ihbh.data.daos.impl.MySqlUserTypeDaoImpl org.jeff.projs.ihbh.services.impl.UserTypeServiceImpl.userTypeDaoImpl
+Returning cached instance of singleton bean 'userTypeDaoImpl'
+Autowiring by type from bean name 'userTypeServiceImpl' to bean named 'userTypeDaoImpl'
+Finished creating instance of bean 'userTypeServiceImpl'
+Creating shared instance of singleton bean 'messageUtils'
+Creating instance of bean 'messageUtils'
+Eagerly caching bean 'messageUtils' to allow for resolving potential circular references
+Finished creating instance of bean 'messageUtils'
+Returning cached instance of singleton bean 'dataSource'
+Returning cached instance of singleton bean 'messageSource'
+Returning cached instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+Returning cached instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@30c8681]
+Returning cached instance of singleton bean 'lifecycleProcessor'
+Searching for key 'spring.liveBeansView.mbeanDomain' in [systemProperties]
+Searching for key 'spring.liveBeansView.mbeanDomain' in [systemEnvironment]
+Could not find key 'spring.liveBeansView.mbeanDomain' in any property source. Returning [null]
+Returning cached instance of singleton bean 'categoryDaoImpl'
+Executing SQL update [DELETE from category]
+Fetching JDBC Connection from DataSource
+SQL update affected 14 rows
+Returning JDBC Connection to DataSource
+Executing prepared SQL update
+Executing prepared SQL statement [Insert into category (category, par_id, list_order, level) values (?, ?, ?, ?)]
+Fetching JDBC Connection from DataSource
+SQL update affected 1 rows
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where category = ?]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL update
+Executing prepared SQL statement [Insert into category (category, par_id, list_order, level) values (?, ?, ?, ?)]
+Fetching JDBC Connection from DataSource
+SQL update affected 1 rows
+Returning JDBC Connection to DataSource
+Executing prepared SQL update
+Executing prepared SQL statement [Insert into category (category, par_id, list_order, level) values (?, ?, ?, ?)]
+Fetching JDBC Connection from DataSource
+SQL update affected 1 rows
+Returning JDBC Connection to DataSource
+Executing prepared SQL update
+Executing prepared SQL statement [Insert into category (category, par_id, list_order, level) values (?, ?, ?, ?)]
+Fetching JDBC Connection from DataSource
+SQL update affected 1 rows
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where category = ?]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL update
+Executing prepared SQL statement [Insert into category (category, par_id, list_order, level) values (?, ?, ?, ?)]
+Fetching JDBC Connection from DataSource
+SQL update affected 1 rows
+Returning JDBC Connection to DataSource
+Executing prepared SQL update
+Executing prepared SQL statement [Insert into category (category, par_id, list_order, level) values (?, ?, ?, ?)]
+Fetching JDBC Connection from DataSource
+SQL update affected 1 rows
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where category = ?]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL update
+Executing prepared SQL statement [Insert into category (category, par_id, list_order, level) values (?, ?, ?, ?)]
+Fetching JDBC Connection from DataSource
+SQL update affected 1 rows
+Returning JDBC Connection to DataSource
+Executing prepared SQL update
+Executing prepared SQL statement [Insert into category (category, par_id, list_order, level) values (?, ?, ?, ?)]
+Fetching JDBC Connection from DataSource
+SQL update affected 1 rows
+Returning JDBC Connection to DataSource
+Executing prepared SQL update
+Executing prepared SQL statement [Insert into category (category, par_id, list_order, level) values (?, ?, ?, ?)]
+Fetching JDBC Connection from DataSource
+SQL update affected 1 rows
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where category = ?]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL update
+Executing prepared SQL statement [Insert into category (category, par_id, list_order, level) values (?, ?, ?, ?)]
+Fetching JDBC Connection from DataSource
+SQL update affected 1 rows
+Returning JDBC Connection to DataSource
+Executing prepared SQL update
+Executing prepared SQL statement [Insert into category (category, par_id, list_order, level) values (?, ?, ?, ?)]
+Fetching JDBC Connection from DataSource
+SQL update affected 1 rows
+Returning JDBC Connection to DataSource
+Executing prepared SQL update
+Executing prepared SQL statement [Insert into category (category, par_id, list_order, level) values (?, ?, ?, ?)]
+Fetching JDBC Connection from DataSource
+SQL update affected 1 rows
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where category = ?]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL update
+Executing prepared SQL statement [Insert into category (category, par_id, list_order, level) values (?, ?, ?, ?)]
+Fetching JDBC Connection from DataSource
+SQL update affected 1 rows
+Returning JDBC Connection to DataSource
+Executing prepared SQL update
+Executing prepared SQL statement [Insert into category (category, par_id, list_order, level) values (?, ?, ?, ?)]
+Fetching JDBC Connection from DataSource
+SQL update affected 1 rows
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where par_id = ? order by list_order]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where par_id = ? order by list_order]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where par_id = ? order by list_order]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where par_id = ? order by list_order]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where par_id = ? order by list_order]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where par_id = ? order by list_order]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where par_id = ? order by list_order]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where par_id = ? order by list_order]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where par_id = ? order by list_order]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where par_id = ? order by list_order]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where par_id = ? order by list_order]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where par_id = ? order by list_order]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where par_id = ? order by list_order]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where par_id = ? order by list_order]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource
+Executing prepared SQL query
+Executing prepared SQL statement [Select * from CATEGORY where par_id = ? order by list_order]
+Fetching JDBC Connection from DataSource
+Returning JDBC Connection to DataSource

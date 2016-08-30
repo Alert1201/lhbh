@@ -1,0 +1,292 @@
+/*
+
+My Custom CSS
+=============
+
+Author:  Brad Hussey
+Updated: August 2013
+Notes:	 Hand coded for Udemy.com
+
+*/
+body{
+    background-color: #eeeedd;
+}
+
+/* --------------------------------------
+   Layout
+   -------------------------------------- */
+// Right Column Recent editions
+
+.recent {
+    font-style: bold;
+    font-size: 20px; 
+    padding-top: 1px;
+    padding-bottom: 1px; 
+    margin-top:0px;
+    margin-bottom:0px
+}
+
+.month2 {
+    border: 2px solid #a1a1a1;
+    padding: 10px 10px; 
+    background:#F0FFFF;
+    width: 220px;
+    border-radius: 10px;
+}
+
+.month3 {
+    border: 2px solid #a1a1a1;
+    padding: 10px 10px; 
+    background:#F5F5DC;
+    width: 220px;
+    border-radius: 10px;
+}
+
+.month4 {
+    border: 2px solid #a1a1a1;
+    padding: 10px 10px; 
+    background:#FFE4C4;
+    width: 220px;
+    border-radius: 10px;
+}
+.page-title{
+    border-bottom: 1px solid #ddd;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color:darkblue;
+    padding-bottom: 10px;
+}
+.contentContainer{
+    background-color: #eeeeee;
+    margin-top: 1px;
+    margin-left: 1px;
+    margin-right: 1px;
+    border: 1px solid green; 
+}
+
+.container{
+    background-color: #eeeeee;
+}
+
+.columnContainer{
+    margin-top:3px;
+    margin-right:5px;
+    margin-left:6px;
+    border:1px solid green;
+    background-color: #eeeeee;
+    border-radius: 5px ;
+}
+
+.col-inner{
+   margin-top:5px;
+}
+.panel-heading{
+    font-size:20px;
+}
+
+.ifont{
+    font-size: 16px;
+}
+
+.dropdown-menu>li
+{	position:relative;
+  -webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+  cursor:pointer;
+}
+.dropdown-menu .sub-menu {
+    left: 100%;
+    position: absolute;
+    top: 0;
+    display:none;
+    margin-top: -1px;
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+    border-left-color:#fff;
+    box-shadow:none;
+}
+.right-caret:after
+{	content:"";
+  border-bottom: 4px solid transparent;
+  border-top: 4px solid transparent;
+  border-left: 4px solid orange;
+  display: inline-block;
+  height: 0;
+  opacity: 0.8;
+  vertical-align: middle;
+  width: 0;
+  margin-left:5px;
+}
+.left-caret:after
+{	content:"";
+  border-bottom: 4px solid transparent;
+  border-top: 4px solid transparent;
+  border-right: 4px solid orange;
+  display: inline-block;
+  height: 0;
+  opacity: 0.8;
+  vertical-align: middle;
+  width: 0;
+  margin-left:5px;
+}
+
+.titlePreSel{
+    color: red;
+}
+
+.titlePostSel{
+    color: black;
+}
+
+.playerClass{
+    padding-bottom: 3px;
+    padding-top: 3px;
+    vertical-align: middle;
+    text-align: center;
+}
+/* --------------------------------------
+   Typography
+   -------------------------------------- */
+div.vcenter {
+   position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+div.hymns-tabsShow{
+    visibility: hidden;
+}
+div.hymns-tabHide{
+    visibility: visible;
+}
+
+.audioControlsShow{
+    visibility: hidden;
+    display:none;
+}
+
+#controlsTable{
+    visibility: hidden;
+    display:none;
+}
+td.hymnTitle{
+    vertical-align:middle;
+    text-align:center;
+    font-size:20px;
+}
+td.hymnType{
+    font-weight: bold;
+    text-align: center;
+    font-size: 17px;
+    width: 33%;
+}
+td.hymnVoice{
+    text-align: center;
+    font-size: 14px;
+    font-weight:bolder;
+}
+td.hymnData{
+    padding-bottom: 3px;
+    padding-top: 3px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.left{
+    text-align: left;
+}
+.glyphicon.smaller {font-size: 8px;}
+/* --------------------------------------
+   Navbar
+   -------------------------------------- */
+#searchInput{
+    width:200px;
+}
+
+.navbar {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom:5px;
+    border: 1px solid green;
+}
+
+
+div.message{
+    border:2px solid #8D0D19;
+    color:#8D0D19; font-weight:bold;
+    margin:1em 0; padding:1em;
+}
+p.message{
+    border:2px solid #8D0D19;
+    color:#8D0D19; font-weight:bold;
+    margin:1em 0; padding:1em;
+}
+/* --------------------------------------
+   Carousel
+   -------------------------------------- */
+
+
+/* --------------------------------------
+   Global Styles
+   -------------------------------------- */
+
+
+
+
+
+
+
+/* --------------------------------------
+   Media Queries
+   -------------------------------------- */
+
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+#myCarousel .item {height:400px;}
+    #slide1 {
+        background:url('../../images/car-1200-01-TitText.jpg') top center no-repeat;
+            background-size:cover;;
+    }
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+#myCarousel .item {height:300px;}
+    #slide1 {
+        background:url('../../images/car-922-1199-01-TitText.jpg') top center no-repeat;
+        background-size:cover;
+    }
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+#myCarousel .item {height:250px;}
+    #slide1 {
+        background:url('../../images/car-768-991-01-TitText.jpg') top center no-repeat;
+        background-size:cover;
+    }
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+#myCarousel .item {height:200px;}
+    #slide1 {
+        background:url('../../images/car-767-01-TitText.jpg') top center no-repeat;
+        background-size:cover;
+    }
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+#myCarousel .item {height:150px;}
+    #slide1 {
+        background:url('../../images/car-480-01-tit.jpg') top center no-repeat;
+        background-size:cover;
+    }
+}

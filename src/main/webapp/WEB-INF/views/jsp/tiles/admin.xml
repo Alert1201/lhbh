@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<!-- View Layouts -->
+	<definition name="admin.meter.view" template="/WEB-INF/views/jsp/layouts/adminView.jsp">
+		<put-attribute name="title" value="Hymns Parts Administration" />
+		<put-attribute name="table" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/metersViewTable.jsp" />
+		<put-attribute name="header" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/header.jsp" />
+		<put-attribute name="menu" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/menu.jsp" />
+		<put-attribute name="body" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/metersView.jsp" />
+		<put-attribute name="footer" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/footer.jsp" />
+	</definition><!-- admin.view -->
+
+	<definition name="admin.author.view" template="/WEB-INF/views/jsp/layouts/adminView.jsp">
+		<put-attribute name="title" value="Hymns Parts Administration" />
+		<put-attribute name="table" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/authorsViewTable.jsp" />
+		<put-attribute name="header" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/header.jsp" />
+		<put-attribute name="menu" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/menu.jsp" />
+		<put-attribute name="body" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/authorsView.jsp" />
+		<put-attribute name="footer" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/footer.jsp" />
+	</definition><!-- admin.view -->
+	
+		<definition name="admin.userTypes.view" template="/WEB-INF/views/jsp/layouts/adminView.jsp">
+		<put-attribute name="title" value="Hymns Parts Administration" />
+		<put-attribute name="table" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/userTypesViewTable.jsp" />
+		<put-attribute name="header" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/header.jsp" />
+		<put-attribute name="menu" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/menu.jsp" />
+		<put-attribute name="body" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/userTypesView.jsp" />
+		<put-attribute name="footer" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/footer.jsp" />
+	</definition><!-- admin.view -->
+
+	<definition name="admin.tunes.view" template="/WEB-INF/views/jsp/layouts/adminView.jsp">
+		<put-attribute name="title" value="Hymns Parts Administration" />
+		<put-attribute name="table" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/tunesViewTable.jsp" />
+		<put-attribute name="header" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/header.jsp" />
+		<put-attribute name="menu" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/menu.jsp" />
+		<put-attribute name="body" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/tunesView.jsp" />
+		<put-attribute name="footer" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/footer.jsp" />
+	</definition><!-- admin.view -->
+
+	<definition name="admin.start.view" template="/WEB-INF/views/jsp/layouts/adminView.jsp">
+		<put-attribute name="title" value="Hymns Parts Administration" />
+		<put-attribute name="table" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/startViewTable.jsp" />
+		<put-attribute name="header" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/header.jsp" />
+		<put-attribute name="menu" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/menu.jsp" />
+		<put-attribute name="body" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/startView.jsp" />
+		<put-attribute name="footer" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/footer.jsp" />
+	</definition><!-- "admin.start.view" -->
+
+	<definition name="admin.hymnals.view" template="/WEB-INF/views/jsp/layouts/adminView.jsp">
+		<put-attribute name="title" value="Hymns Parts Administration" />
+		<put-attribute name="table" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/hymnalsViewTable.jsp" />
+		<put-attribute name="header" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/header.jsp" />
+		<put-attribute name="menu" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/menu.jsp" />
+		<put-attribute name="body" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/hymnalsView.jsp" />
+		<put-attribute name="footer" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/footer.jsp" />
+	</definition><!-- "admin.start.view" -->
+
+	<definition name="admin.category.view" template="/WEB-INF/views/jsp/layouts/adminView.jsp">
+		<put-attribute name="title" value="Hymns Parts Administration" />
+		<put-attribute name="table" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/emptyTable.jsp" />
+		<put-attribute name="header" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/header.jsp" />
+		<put-attribute name="menu" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/menu.jsp" />
+		<put-attribute name="body" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/categoryView.jsp" />
+		<put-attribute name="footer" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/footer.jsp" />
+	</definition><!-- "admin.start.view" -->
+
+	<!-- Update Layouts -->
+
+	<definition name="admin.*"
+		template="/WEB-INF/views/jsp/layouts/adminAddUpdate.jsp">
+		<put-attribute name="title" value="Hymns Parts Administration" />
+		<put-attribute name="header" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/header.jsp" />
+		<put-attribute name="menu" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/menu.jsp" />
+		<put-attribute name="body" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/{1}.jsp" />
+		<put-attribute name="footer" type="template"
+			value="/WEB-INF/views/jsp/templates/admin/footer.jsp" />
+	</definition><!-- admin.admin.addUpdate -->
+</tiles-definitions>
+
