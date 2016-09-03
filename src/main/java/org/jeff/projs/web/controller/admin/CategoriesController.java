@@ -24,7 +24,7 @@ public class CategoriesController {
 		CategoryTree tree = categoryService.getTree();
 		model.addAttribute("tree", tree);
 		model.addAttribute("menu", AdminMenu.map);
-		return "admin.categoriesView";
+		return "admin.category.view";
 	}
 	
 	

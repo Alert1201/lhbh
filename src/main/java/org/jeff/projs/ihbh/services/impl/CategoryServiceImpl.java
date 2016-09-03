@@ -7,7 +7,9 @@ import org.jeff.projs.ihbh.data.domains.CategoryDto;
 import org.jeff.projs.ihbh.services.CategoryService;
 import org.jeff.projs.ihbh.utils.CategoryTree;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service("categoryServiceImpl")
 public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired

@@ -19,12 +19,12 @@ public class AjaxControler {
 
 		return "myapp.looseSearch";
 	}
-
+	
+	//@RequestMapping(value={"looseSearch"}, headers="Accept=*/*",produces = "application/json")  
 	@RequestMapping("looseSearch")
-	public @ResponseBody List<Book> search(@RequestParam("CHARS") String chars, Model model) {
+	public @ResponseBody List<Book> search(Model model) {
 		List<Book> books = new ArrayList<Book>();
 		books.add(new Book("Star Treck", "Bettle Bum"));
-		 model.addAttribute("books", books);
-		return books; //bookService.searchBooksByLooseMatch(chars);
+		return books;
 	}
 }

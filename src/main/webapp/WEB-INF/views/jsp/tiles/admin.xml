@@ -92,13 +92,13 @@
 	<definition name="admin.category.view" template="/WEB-INF/views/jsp/layouts/adminView.jsp">
 		<put-attribute name="title" value="Hymns Parts Administration" />
 		<put-attribute name="table" type="template"
-			value="/WEB-INF/views/jsp/templates/admin/emptyTable.jsp" />
+			value="/WEB-INF/views/jsp/templates/admin/categoriesTreeView.jsp" />
 		<put-attribute name="header" type="template"
 			value="/WEB-INF/views/jsp/templates/admin/header.jsp" />
 		<put-attribute name="menu" type="template"
 			value="/WEB-INF/views/jsp/templates/admin/menu.jsp" />
 		<put-attribute name="body" type="template"
-			value="/WEB-INF/views/jsp/templates/admin/categoryView.jsp" />
+			value="/WEB-INF/views/jsp/templates/admin/categoriesView.jsp" />
 		<put-attribute name="footer" type="template"
 			value="/WEB-INF/views/jsp/templates/admin/footer.jsp" />
 	</definition><!-- "admin.start.view" -->

@@ -7,12 +7,17 @@
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script type="text/javascript">
 		function doSearch() {
-			$.getJSON("looseSearch", {
-				CHARS : $('#searchBox').val()
-			},	
-			function(books) {
-				alert("Response Received");
-			});
+			  $.ajax({
+				  	dataType: "json",
+		            url : "looseSearch",
+		            success : function(data) {
+		                confirm(data);
+		            },
+			  		error: function(jqXHR, textStatus, errorThrown){
+			  			alert(jqXHR.status);
+			  			alert(textStatus);
+			  		}
+		        });
 		 }
 		
 	</script>

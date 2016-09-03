@@ -14,15 +14,23 @@
 	<!-- Database -->
 
 
-	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+<!-- 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/testhymnparts" />
 		<property name="username" value="root" />
 		<property name="password" value="" />
 		<property name="initialSize" value="2" />
 		<property name="maxTotal" value="5" />
-	</bean>
+	</bean> -->
 
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://97.74.31.62:3306/testlhbp" />
+		<property name="username" value="testlhbp" />
+		<property name="password" value="Brunner@1" />
+		<property name="initialSize" value="2" />
+		<property name="maxTotal" value="5" />
+	</bean>
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
