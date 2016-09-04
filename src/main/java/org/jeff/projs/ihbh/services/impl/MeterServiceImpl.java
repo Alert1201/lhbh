@@ -5,7 +5,9 @@ import java.util.List;
 import org.jeff.projs.ihbh.data.daos.impl.MySqlMeterDaoImpl;
 import org.jeff.projs.ihbh.data.domains.MeterDto;
 import org.jeff.projs.ihbh.services.MeterService;
+import org.jeff.projs.ihbh.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 @Service("meterServiceImpl")
@@ -13,10 +15,10 @@ public class MeterServiceImpl implements MeterService {
 
 	@Autowired
 	MySqlMeterDaoImpl meterDaoImpl;
-	
+
 	@Override
 	public int save(MeterDto dto) {
-		if(dto.getId()!=0){
+		if (dto.getId() != 0) {
 			meterDaoImpl.update(dto);
 		} else {
 			meterDaoImpl.add(dto);
@@ -26,7 +28,11 @@ public class MeterServiceImpl implements MeterService {
 
 	@Override
 	public int delete(int id) {
-		return meterDaoImpl.delete(id);
+		try {
+			return meterDaoImpl.delete(id);
+		} catch (DataIntegrityViolationException e) {
+			return Constants.DB_DATAINTEGRITYVIOLATIONEXCEPTION_RETVALUE;
+		}
 	}
 
 	@Override
@@ -36,7 +42,7 @@ public class MeterServiceImpl implements MeterService {
 
 	@Override
 	public List<MeterDto> getAll() {
-			return meterDaoImpl.getAll();
+		return meterDaoImpl.getAll();
 	}
 
 	@Override

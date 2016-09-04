@@ -23,12 +23,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 
 @Configuration
-@ComponentScan(basePackages = { "org.jeff.projs.ihbh.data.daos",
-		"org.jeff.projs.ihbh.services", "org.jeff.projs.web.controller" })
+
 
 public class  ApplicationConfig {
 
-	 @Bean 
+/*	 @Bean 
 	   public MetersController metersController(){
 	      return new MetersController();
 	   }
@@ -92,13 +91,13 @@ public class  ApplicationConfig {
 	   public  LookupServiceImpl  lookupServiceImpl(){
 	      return new LookupServiceImpl();
 	   }
-	 
+	 */
 	 @Bean(name = "dataSource")
 	public DataSource dataSource() {
 		BasicDataSource datasource = new BasicDataSource();
 		datasource.setDriverClassName("com.mysql.jdbc.Driver");
-		datasource.setUrl("jdbc:mysql://localhost:3306/testhymnparts");
-		datasource.setUsername("root");
+		datasource.setUrl("dbc:mysql://97.74.31.62:3306/testlhbp");
+		datasource.setUsername("dev");
 		datasource.setPassword("");
 		datasource.setInitialSize(2);
 		datasource.setMaxTotal(5);

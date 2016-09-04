@@ -19,8 +19,8 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 
 @Configuration
-@ComponentScan(basePackages = { "org.jeff.projs.ihbh.data.daos",
-		"org.jeff.projs.ihbh.services", "org.jeff.projs.web.controller" })
+/*@ComponentScan(basePackages = { "org.jeff.projs.ihbh.data.daos",
+		"org.jeff.projs.ihbh.services", "org.jeff.projs.web.controller" })*/
 @EnableWebMvc
 public class MvcConfiguration extends WebMvcConfigurerAdapter {
 

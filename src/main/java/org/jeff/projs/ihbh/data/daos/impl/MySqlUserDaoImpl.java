@@ -9,7 +9,9 @@ import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 import org.jeff.projs.ihbh.data.daos.UsersDAO;
 import org.jeff.projs.ihbh.data.domains.UserDto;
+import org.jeff.projs.ihbh.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -38,13 +40,8 @@ public class MySqlUserDaoImpl implements UsersDAO {
 
 	@Override
 	public int update(UserDto dto, int updateId) {
-		String sql = "update USERS SET username = :username,"
-				+ "first_name = :firstName, "
-				+ "last_name = :lastName, " 
-				+ "hashed_password = :hashedPassword, "
-				+ "type_id = :typeId, " 
-				+ "email = :email,"
-				+ "salt = :salt "
+		String sql = "update USERS SET username = :username," + "first_name = :firstName, " + "last_name = :lastName, "
+				+ "hashed_password = :hashedPassword, " + "type_id = :typeId, " + "email = :email," + "salt = :salt "
 				+ "where id = " + updateId + ";";
 		MapSqlParameterSource namedParameters = setNamedParameter(dto);
 		return namedParameterJdbcTemplate.update(sql, namedParameters);
@@ -52,17 +49,20 @@ public class MySqlUserDaoImpl implements UsersDAO {
 
 	@Override
 	public int delete(int id) {
-		String sql = "DELETE from USERS where id = :id";
-		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-		namedParameters.addValue("id", id);
-		return namedParameterJdbcTemplate.update(sql, namedParameters);
+		try {
+			String sql = "DELETE from USERS where id = :id";
+			MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+			namedParameters.addValue("id", id);
+			return namedParameterJdbcTemplate.update(sql, namedParameters);
+		} catch (DataIntegrityViolationException e) {
+			return Constants.DB_DATAINTEGRITYVIOLATIONEXCEPTION_RETVALUE;
+		}
 	}
 
 	@Override
 	public UserDto getUserById(int id) {
 		String sql = "Select * from USERS where id = ?";
-		return jdbcTemplate.queryForObject(sql, new Object[] { id },
-				new UserMapper());
+		return jdbcTemplate.queryForObject(sql, new Object[] { id }, new UserMapper());
 	}
 
 	@Override
@@ -70,23 +70,20 @@ public class MySqlUserDaoImpl implements UsersDAO {
 		String sql = "Select * from USERS where type_id = :typeId";
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("typeId", userTypeId);
-		return namedParameterJdbcTemplate.query(sql, namedParameters,
-				new UserMapper());
+		return namedParameterJdbcTemplate.query(sql, namedParameters, new UserMapper());
 	}
 
 	@Override
 	public UserDto getUserByUserName(String userName) {
 		String sql = "Select * from USERS where username = ?";
-		return jdbcTemplate.queryForObject(sql, new Object[] { userName },
-				new UserMapper());
+		return jdbcTemplate.queryForObject(sql, new Object[] { userName }, new UserMapper());
 	}
 
 	@Override
 	public UserDto getUserByFullName(String firstName, String lastName) {
 		try {
 			String sql = "Select * from USERS where first_name = ? and last_name = ?";
-			return jdbcTemplate.queryForObject(sql, new Object[] { firstName,
-					lastName }, new UserMapper());
+			return jdbcTemplate.queryForObject(sql, new Object[] { firstName, lastName }, new UserMapper());
 		} catch (EmptyResultDataAccessException e) {
 			log.info("getUserByFullName returns null");
 		}
@@ -119,8 +116,7 @@ public class MySqlUserDaoImpl implements UsersDAO {
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
-		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(
-				dataSource);
+		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
 	private static final class UserMapper implements RowMapper<UserDto> {

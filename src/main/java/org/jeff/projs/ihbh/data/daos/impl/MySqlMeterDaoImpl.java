@@ -9,7 +9,9 @@ import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 import org.jeff.projs.ihbh.data.daos.MeterDAO;
 import org.jeff.projs.ihbh.data.domains.MeterDto;
+import org.jeff.projs.ihbh.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -35,26 +37,24 @@ public class MySqlMeterDaoImpl implements MeterDAO {
 
 	@Override
 	public int update(MeterDto dto) {
-		String sql = "update meter SET meter = :meter "
-				+ ", description = :description" + " where id = " + dto.getId();
+		String sql = "update meter SET meter = :meter " + ", description = :description" + " where id = " + dto.getId();
 		MapSqlParameterSource namedParameters = setNamedParameter(dto);
 		return namedParameterJdbcTemplate.update(sql, namedParameters);
 	}
 
 	@Override
-	public int delete(int id) {
-		String sql = "DELETE from meter where id = :id";
-		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-		namedParameters.addValue("id", id);
-		return namedParameterJdbcTemplate.update(sql, namedParameters);
+	public int delete(int id) throws DataIntegrityViolationException {
+			String sql = "DELETE from meter where id = :id";
+			MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+			namedParameters.addValue("id", id);
+			return namedParameterJdbcTemplate.update(sql, namedParameters);
 	}
 
 	@Override
 	public MeterDto getMeterById(int id) {
 		try {
 			String sql = "Select * from meter where id = ?";
-			return jdbcTemplate.queryForObject(sql, new Object[] { id },
-					new MeterMapper());
+			return jdbcTemplate.queryForObject(sql, new Object[] { id }, new MeterMapper());
 		} catch (EmptyResultDataAccessException e) {
 			log.info("getUserByFullName returns null");
 		}
@@ -65,8 +65,7 @@ public class MySqlMeterDaoImpl implements MeterDAO {
 	public MeterDto getMeterByMeter(String meter) {
 		try {
 			String sql = "Select * from meter where meter = ? ";
-			return jdbcTemplate.queryForObject(sql, new Object[] { meter },
-					new MeterMapper());
+			return jdbcTemplate.queryForObject(sql, new Object[] { meter }, new MeterMapper());
 		} catch (EmptyResultDataAccessException e) {
 			log.info("getUserByFullName returns null");
 		}
@@ -99,8 +98,7 @@ public class MySqlMeterDaoImpl implements MeterDAO {
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
-		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(
-				dataSource);
+		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
 	private static final class MeterMapper implements RowMapper<MeterDto> {

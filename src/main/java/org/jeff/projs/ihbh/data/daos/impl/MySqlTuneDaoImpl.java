@@ -12,8 +12,10 @@ import org.jeff.projs.ihbh.data.daos.TunesDAO;
 import org.jeff.projs.ihbh.data.domains.AuthorDto;
 import org.jeff.projs.ihbh.data.domains.MeterDto;
 import org.jeff.projs.ihbh.data.domains.TuneDto;
+import org.jeff.projs.ihbh.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
@@ -42,10 +44,8 @@ public class MySqlTuneDaoImpl implements TunesDAO {
 
 	@Override
 	public int update(TuneDto dto) {
-		String sql = "update tunes SET name = :name, "
-				+ "meter_id = :meter_id, "
-				+ "composition_year = :composition_year, "
-				+ "author_id = :author_id, " + "nationality = :nationality "
+		String sql = "update tunes SET name = :name, " + "meter_id = :meter_id, "
+				+ "composition_year = :composition_year, " + "author_id = :author_id, " + "nationality = :nationality "
 				+ "where id = " + dto.getId();
 		MapSqlParameterSource namedParameters = setNamedParameter(dto);
 		return namedParameterJdbcTemplate.update(sql, namedParameters);
@@ -64,18 +64,21 @@ public class MySqlTuneDaoImpl implements TunesDAO {
 
 	@Override
 	public int delete(int id) {
-		String sql = "DELETE from TUNES where id = :id";
-		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-		namedParameters.addValue("id", id);
-		return namedParameterJdbcTemplate.update(sql, namedParameters);
+		try {
+			String sql = "DELETE from TUNES where id = :id";
+			MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+			namedParameters.addValue("id", id);
+			return namedParameterJdbcTemplate.update(sql, namedParameters);
+		} catch (DataIntegrityViolationException e) {
+			return Constants.DB_DATAINTEGRITYVIOLATIONEXCEPTION_RETVALUE;
+		}
 	}
 
 	@Override
 	public TuneDto getTuneById(int id) {
 		try {
 			String sql = "Select * from tunes where id = ?";
-			return jdbcTemplate.queryForObject(sql, new Object[] { id },
-					new TunesMapper());
+			return jdbcTemplate.queryForObject(sql, new Object[] { id }, new TunesMapper());
 		} catch (EmptyResultDataAccessException e) {
 			log.info("getUserByFullName returns null");
 		}
@@ -84,12 +87,13 @@ public class MySqlTuneDaoImpl implements TunesDAO {
 
 	@Override
 	public TuneDto getTuneByName(String name) {
-		try{
-		String sql = "Select * from tunes where name = ?";
-		return jdbcTemplate.queryForObject(sql, new Object[] {name}, new TunesMapper());	
+		try {
+			String sql = "Select * from tunes where name = ?";
+			return jdbcTemplate.queryForObject(sql, new Object[] { name }, new TunesMapper());
 		} catch (EmptyResultDataAccessException e) {
-				log.info("getUserByFullName returns null");
-			}				return null;
+			log.info("getUserByFullName returns null");
+		}
+		return null;
 
 	}
 
@@ -98,8 +102,7 @@ public class MySqlTuneDaoImpl implements TunesDAO {
 		String sql = "Select * from tunes where meter_id = :meter_id";
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("meter_id", meterId);
-		return namedParameterJdbcTemplate.query(sql, namedParameters,
-				new TunesMapper());
+		return namedParameterJdbcTemplate.query(sql, namedParameters, new TunesMapper());
 	}
 
 	@Override
@@ -107,31 +110,27 @@ public class MySqlTuneDaoImpl implements TunesDAO {
 		String sql = "Select * from tunes where author_id = :author_id";
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("author_id", authorid);
-		return namedParameterJdbcTemplate.query(sql, namedParameters,
-				new TunesMapper());
+		return namedParameterJdbcTemplate.query(sql, namedParameters, new TunesMapper());
 	}
 
-	
 	@Override
 	public LinkedHashMap<Integer, String> getTunesLookup() {
-		return jdbcTemplate
-				.query("select id, name from tunes order by name",
-						new ResultSetExtractor<LinkedHashMap<Integer, String>>() {
-							@Override
-							public LinkedHashMap<Integer, String> extractData(ResultSet rs)
-									throws SQLException, DataAccessException {
+		return jdbcTemplate.query("select id, name from tunes order by name",
+				new ResultSetExtractor<LinkedHashMap<Integer, String>>() {
+					@Override
+					public LinkedHashMap<Integer, String> extractData(ResultSet rs)
+							throws SQLException, DataAccessException {
 
-								LinkedHashMap<Integer, String> map = new LinkedHashMap<Integer, String>();
-								while (rs.next()) {
-									map.put(rs.getInt("id"),
-											rs.getString("name"));
+						LinkedHashMap<Integer, String> map = new LinkedHashMap<Integer, String>();
+						while (rs.next()) {
+							map.put(rs.getInt("id"), rs.getString("name"));
 
-								}
-								return map;
-							}
-						});
+						}
+						return map;
+					}
+				});
 	}
-	
+
 	@Override
 	public List<TuneDto> getAll() {
 		String sql = "Select * from tunes";
@@ -152,19 +151,16 @@ public class MySqlTuneDaoImpl implements TunesDAO {
 	}
 
 	@Override
-	public List<TuneDto> getWholeTunes(){
-		String sql = "select a.name, a.id, a.nationality, "
-				+ "a.composition_year, b.meter, "
-				+ "b.description, b.id as meter_id, c.id as author_id, "
-				+ "c.first_name, c.last_name, "
+	public List<TuneDto> getWholeTunes() {
+		String sql = "select a.name, a.id, a.nationality, " + "a.composition_year, b.meter, "
+				+ "b.description, b.id as meter_id, c.id as author_id, " + "c.first_name, c.last_name, "
 				+ "c.DOB_month, c.DOB_year, c.DOD_month, "
 				+ "c.DOD_year, c.nationality as author_nationality, c.DOD_circa, "
-				+ "c.DOB_circa, c.bio from tunes a, meter b, authors c "
-				+ "where a.meter_id = b.id and a"
-				+ ".author_id =c.id";	
+				+ "c.DOB_circa, c.bio from tunes a, meter b, authors c " + "where a.meter_id = b.id and a"
+				+ ".author_id =c.id";
 		return jdbcTemplate.query(sql, new TunesWholeMapper());
 	}
-	
+
 	public DataSource getDataSource() {
 		return dataSource;
 	}
@@ -172,8 +168,7 @@ public class MySqlTuneDaoImpl implements TunesDAO {
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
-		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(
-				dataSource);
+		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
 	private static final class TunesMapper implements RowMapper<TuneDto> {
@@ -190,7 +185,7 @@ public class MySqlTuneDaoImpl implements TunesDAO {
 			return tune;
 		}
 	}
-	
+
 	private static final class TunesWholeMapper implements RowMapper<TuneDto> {
 		// Use column names from table for rs.getXXX() methods.
 		@Override
@@ -205,13 +200,14 @@ public class MySqlTuneDaoImpl implements TunesDAO {
 			return tune;
 		}
 	}
-	private static final class MeterMapper implements RowMapper<MeterDto>{
+
+	private static final class MeterMapper implements RowMapper<MeterDto> {
 
 		@Override
 		public MeterDto mapRow(ResultSet rs, int rowNum) throws SQLException {
 			// TODO Auto-generated method stub
 			return null;
 		}
-		
+
 	}
 }

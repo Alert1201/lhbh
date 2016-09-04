@@ -39,12 +39,8 @@
 <!-- Display messages -->
 <script type="text/javascript">
 $( document ).ready(function() {
+
 	
-	var message = "${message}"
-	if(message != ""){
-	}
-	
-	<c:remove var="message" scope="request" />
 });
  
 
@@ -54,13 +50,16 @@ $( document ).ready(function() {
     margin-top: 5px;
 }
 </style>
+
+
 </head>
 <body>
 	<tiles:insertAttribute name="header" />
 	<div id="main">
 		<tiles:insertAttribute name="menu" />
+
 		<tiles:insertAttribute name="body" />
 	</div>
 	<tiles:insertAttribute name="footer" />
 </body>
-</html
+</html>

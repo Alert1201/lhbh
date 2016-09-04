@@ -8,6 +8,7 @@ import org.jeff.projs.ihbh.services.impl.MeterServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -61,7 +62,10 @@ public class MetersController {
 
 	@RequestMapping(value = "delete", method = RequestMethod.GET, params = {"id"})
     public String delete(@RequestParam(value="id", required=true, defaultValue="0") int id, Model model) {
-		meterService.delete(id);
+		int retValue = meterService.delete(id);
+		if(retValue==-1){
+			model.addAttribute("error", "Cannot delete. Meter referenced in other tables");
+		}
 		model.addAttribute("table", "Meters");
 		model.addAttribute("hold", "meters");
 		model.addAttribute("messageType", "info");

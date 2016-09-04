@@ -2,7 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div id="page">
 	<br />
-
+Stiff
+${table}
+${param.error}
+${param.message}
 	<table id="example" class="cell-border" cellspacing="0" width="100%">
 		<thead>
 			<tr>

@@ -9,7 +9,9 @@ import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 import org.jeff.projs.ihbh.data.daos.AuthorDAO;
 import org.jeff.projs.ihbh.data.domains.AuthorDto;
+import org.jeff.projs.ihbh.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -57,8 +59,7 @@ public class MySqlAuthorDaoImpl implements AuthorDAO {
 	public AuthorDto getAuthorById(int id) {
 		try {
 			String sql = "Select * from authors where id = ?";
-			return jdbcTemplate.queryForObject(sql, new Object[] { id },
-					new AuthorMapper());
+			return jdbcTemplate.queryForObject(sql, new Object[] { id }, new AuthorMapper());
 		} catch (EmptyResultDataAccessException e) {
 			log.info("getUserByFullName returns null");
 		}
@@ -69,8 +70,7 @@ public class MySqlAuthorDaoImpl implements AuthorDAO {
 	public AuthorDto getAuthorByFullName(String first_name, String last_name) {
 		try {
 			String sql = "Select * from authors where first_name = ? and last_name = ?";
-			return jdbcTemplate.queryForObject(sql, new Object[] { first_name,
-					last_name }, new AuthorMapper());
+			return jdbcTemplate.queryForObject(sql, new Object[] { first_name, last_name }, new AuthorMapper());
 		} catch (EmptyResultDataAccessException e) {
 			log.info("getUserByFullName returns null");
 		}
@@ -79,22 +79,24 @@ public class MySqlAuthorDaoImpl implements AuthorDAO {
 
 	@Override
 	public int update(AuthorDto dto) {
-		String sql = "update authors SET first_name = :firstName, "
-				+ "last_name = :lastName, " + "DOB_month = :DOB_month, "
-				+ "DOB_year = :DOB_year, " + "DOD_month = :DOD_month,"
-				+ "DOD_year = :DOD_year, " + "DOD_circa = :DOD_circa, "
-				+ "DOB_circa = :DOB_circa, " + "nationality = :nationality, "
-				+ "bio = :bio where id = " + dto.getId() + ";";
+		String sql = "update authors SET first_name = :firstName, " + "last_name = :lastName, "
+				+ "DOB_month = :DOB_month, " + "DOB_year = :DOB_year, " + "DOD_month = :DOD_month,"
+				+ "DOD_year = :DOD_year, " + "DOD_circa = :DOD_circa, " + "DOB_circa = :DOB_circa, "
+				+ "nationality = :nationality, " + "bio = :bio where id = " + dto.getId() + ";";
 		MapSqlParameterSource namedParameters = setNamedParameter(dto);
 		return namedParameterJdbcTemplate.update(sql, namedParameters);
 
 	}
 
 	public int delete(int id) {
-		String sql = "DELETE from authors where id = :id";
-		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-		namedParameters.addValue("id", id);
-		return namedParameterJdbcTemplate.update(sql, namedParameters);
+		try {
+			String sql = "DELETE from authors where id = :id";
+			MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+			namedParameters.addValue("id", id);
+			return namedParameterJdbcTemplate.update(sql, namedParameters);
+		} catch (DataIntegrityViolationException e) {
+			return Constants.DB_DATAINTEGRITYVIOLATIONEXCEPTION_RETVALUE;
+		}
 	}
 
 	public int deleteAll() {
@@ -121,8 +123,7 @@ public class MySqlAuthorDaoImpl implements AuthorDAO {
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
-		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(
-				dataSource);
+		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
 	private static final class AuthorMapper implements RowMapper<AuthorDto> {

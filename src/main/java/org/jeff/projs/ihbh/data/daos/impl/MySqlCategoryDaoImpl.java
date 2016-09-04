@@ -9,7 +9,9 @@ import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 import org.jeff.projs.ihbh.data.daos.CategoryDAO;
 import org.jeff.projs.ihbh.data.domains.CategoryDto;
+import org.jeff.projs.ihbh.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -21,7 +23,7 @@ import org.springframework.stereotype.Repository;
 public class MySqlCategoryDaoImpl implements CategoryDAO {
 
 	static Logger log = Logger.getLogger(MySqlCategoryDaoImpl.class);
-	
+
 	private DataSource dataSource;
 
 	JdbcTemplate jdbcTemplate;
@@ -46,18 +48,21 @@ public class MySqlCategoryDaoImpl implements CategoryDAO {
 
 	@Override
 	public int delete(int id) {
-		String sql = "Delete from CATEGORY where id = :id";
-		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-		namedParameters.addValue("id", id);
-		return namedParameterJdbcTemplate.update(sql, namedParameters);
+		try {
+			String sql = "Delete from CATEGORY where id = :id";
+			MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+			namedParameters.addValue("id", id);
+			return namedParameterJdbcTemplate.update(sql, namedParameters);
+		} catch (DataIntegrityViolationException e) {
+			return Constants.DB_DATAINTEGRITYVIOLATIONEXCEPTION_RETVALUE;
+		}
 	}
 
 	@Override
 	public CategoryDto getCategoryById(int id) {
 		try {
 			String sql = "Select * from CATEGORY where id = ?";
-			return jdbcTemplate.queryForObject(sql, new Object[] { id },
-					new CategoryMapper());
+			return jdbcTemplate.queryForObject(sql, new Object[] { id }, new CategoryMapper());
 		} catch (EmptyResultDataAccessException e) {
 			log.info("getHymnById returns null");
 		}
@@ -68,8 +73,7 @@ public class MySqlCategoryDaoImpl implements CategoryDAO {
 	public CategoryDto getCategoryByCategory(String category) {
 		try {
 			String sql = "Select * from CATEGORY where category = ?";
-			return jdbcTemplate.queryForObject(sql, new Object[] { category },
-					new CategoryMapper());
+			return jdbcTemplate.queryForObject(sql, new Object[] { category }, new CategoryMapper());
 		} catch (EmptyResultDataAccessException e) {
 			log.info("getHymnById returns null");
 		}
@@ -78,11 +82,10 @@ public class MySqlCategoryDaoImpl implements CategoryDAO {
 
 	@Override
 	public List<CategoryDto> getChildrenByParentId(int parId) {
-		String sql = "Select * from CATEGORY where par_id = :parId order by list_order" ;
+		String sql = "Select * from CATEGORY where par_id = :parId order by list_order";
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("parId", parId);
-		return namedParameterJdbcTemplate.query(sql, namedParameters,
-				new CategoryMapper());
+		return namedParameterJdbcTemplate.query(sql, namedParameters, new CategoryMapper());
 	}
 
 	@Override
@@ -91,8 +94,7 @@ public class MySqlCategoryDaoImpl implements CategoryDAO {
 				+ " (SELECT id FROM category WHERE category = :category)";
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("category", parentName);
-		return namedParameterJdbcTemplate.query(sql, namedParameters,
-				new CategoryMapper());
+		return namedParameterJdbcTemplate.query(sql, namedParameters, new CategoryMapper());
 	}
 
 	@Override
@@ -146,7 +148,6 @@ public class MySqlCategoryDaoImpl implements CategoryDAO {
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
-		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(
-				dataSource);
+		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 }
