@@ -26,11 +26,12 @@ public class UserDto implements BaseDto {
 		this.salt = salt;
 	}
 
-	public UserDto(String firstName, String lastName, String userName, String email) {
+	public UserDto(String firstName, String lastName, String userName, String email, int typeId) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = userName;
 		this.hashedPassword="";
+		this.typeId = typeId;
 		this.email = email;
 	}
 

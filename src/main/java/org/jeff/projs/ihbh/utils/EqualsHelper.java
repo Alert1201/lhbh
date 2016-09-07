@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateUtils;
 
 
 public class EqualsHelper {
@@ -23,7 +24,7 @@ public class EqualsHelper {
 		return o1 == o2 || (o1 != null && o1.equals(o2));
 	}
 
-	public static boolean areDatesEqual(Date a, Date b) {
+	public static boolean areTimesEqual(Date a, Date b) {
 		if (a == b) {
 			return true;
 		}
@@ -31,6 +32,16 @@ public class EqualsHelper {
 			return false;
 		}
 		return a.getTime() == b.getTime();
+	}
+	
+	public static boolean areDatesEqual(Date a, Date b) {
+		if (a == b) {
+			return true;
+		}
+		if (a == null || b == null) {
+			return false;
+		}
+		return DateUtils.isSameDay(a, b);
 	}
 	
 	public static boolean areStringsEquals(String s1, String s2){

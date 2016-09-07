@@ -21,9 +21,7 @@ public class TestMySqlTunesDaoImpl {
 
 	@Before
 	public void setup() {
-		TestDaoHelper.authorDaoImpl.deleteAll();
-		TestDaoHelper.meterDaoImpl.deleteAll();
-		TestDaoHelper.tuneDaoImpl.deleteAll();
+		TestDaoHelper.deleteAll();
 	}
 
 	@Test
@@ -182,8 +180,6 @@ public class TestMySqlTunesDaoImpl {
 	@After
 	public void tearDown() {
 		// Delete after each test
-		TestDaoHelper.authorDaoImpl.deleteAll();
-		TestDaoHelper.meterDaoImpl.deleteAll();
-		TestDaoHelper.tuneDaoImpl.deleteAll();
+		TestDaoHelper.deleteAll();
 	}
 }

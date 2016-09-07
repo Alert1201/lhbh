@@ -107,7 +107,7 @@ public class MySqlHymnalDaoImpl implements HymnalDAO {
 
 	@Override
 	public int getCount() {
-		String sql = "SELECT COUNT(*) FROM Hymnals";
+		String sql = "SELECT COUNT(*) FROM hymnals";
 		int num = jdbcTemplate.queryForObject(sql, Integer.class);
 		return num;
 	}

@@ -31,7 +31,7 @@ public class MySqlUserTypeDaoImpl implements UserTypesDAO {
 	@Override
 	public int add(UserTypeDto dto) {
 		// For values use the dto property names, not the sql column names.
-		String sql = "Insert into USER_TYPES (user_type, description) " + "values (:userType, :description)";
+		String sql = "Insert into user_types (user_type, description) " + "values (:userType, :description)";
 		MapSqlParameterSource namedParameters = setNamedParameter(dto);
 		return namedParameterJdbcTemplate.update(sql, namedParameters);
 	}
@@ -64,13 +64,13 @@ public class MySqlUserTypeDaoImpl implements UserTypesDAO {
 
 	@Override
 	public UserTypeDto getUserTypeByUserType(String userType) {
-		String sql = "Select * from USER_TYPES where user_type = ? ";
+		String sql = "Select * from user_types where user_type = ? ";
 		return jdbcTemplate.queryForObject(sql, new Object[] { userType }, new UserTypeMapper());
 	}
 
 	@Override
 	public UserTypeDto getUserTypeByDescription(String desc) {
-		String sql = "Select * from USER_TYPES where description = ? ";
+		String sql = "Select * from user_types where description = ? ";
 		return jdbcTemplate.queryForObject(sql, new Object[] { desc }, new UserTypeMapper());
 	}
 
@@ -104,7 +104,6 @@ public class MySqlUserTypeDaoImpl implements UserTypesDAO {
 						LinkedHashMap<Integer, String> map = new LinkedHashMap<Integer, String>();
 						while (rs.next()) {
 							map.put(rs.getInt("id"), rs.getString("name"));
-
 						}
 						return map;
 					}
@@ -139,5 +138,4 @@ public class MySqlUserTypeDaoImpl implements UserTypesDAO {
 		namedParameters.addValue("userType", dto.getUserType());
 		return namedParameters;
 	}
-
 }

@@ -40,7 +40,7 @@ public class MySqlCategoryDaoImpl implements CategoryDAO {
 	@Override
 	// Update the row where id = id with the dto.
 	public int update(CategoryDto dto) {
-		String sql = "update CATEGORY SET category = :category, "
+		String sql = "update category SET category = :category, "
 				+ "par_id = :parId, list_order = :listOrder , level = :level" + " where id = " + dto.getId() + ";";
 		MapSqlParameterSource namedParameters = setNamedParameter(dto);
 		return namedParameterJdbcTemplate.update(sql, namedParameters);
@@ -49,7 +49,7 @@ public class MySqlCategoryDaoImpl implements CategoryDAO {
 	@Override
 	public int delete(int id) {
 		try {
-			String sql = "Delete from CATEGORY where id = :id";
+			String sql = "Delete from category where id = :id";
 			MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 			namedParameters.addValue("id", id);
 			return namedParameterJdbcTemplate.update(sql, namedParameters);
@@ -61,7 +61,7 @@ public class MySqlCategoryDaoImpl implements CategoryDAO {
 	@Override
 	public CategoryDto getCategoryById(int id) {
 		try {
-			String sql = "Select * from CATEGORY where id = ?";
+			String sql = "Select * from category where id = ?";
 			return jdbcTemplate.queryForObject(sql, new Object[] { id }, new CategoryMapper());
 		} catch (EmptyResultDataAccessException e) {
 			log.info("getHymnById returns null");
@@ -72,7 +72,7 @@ public class MySqlCategoryDaoImpl implements CategoryDAO {
 	@Override
 	public CategoryDto getCategoryByCategory(String category) {
 		try {
-			String sql = "Select * from CATEGORY where category = ?";
+			String sql = "Select * from category where category = ?";
 			return jdbcTemplate.queryForObject(sql, new Object[] { category }, new CategoryMapper());
 		} catch (EmptyResultDataAccessException e) {
 			log.info("getHymnById returns null");
@@ -82,7 +82,7 @@ public class MySqlCategoryDaoImpl implements CategoryDAO {
 
 	@Override
 	public List<CategoryDto> getChildrenByParentId(int parId) {
-		String sql = "Select * from CATEGORY where par_id = :parId order by list_order";
+		String sql = "Select * from category where par_id = :parId order by list_order";
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("parId", parId);
 		return namedParameterJdbcTemplate.query(sql, namedParameters, new CategoryMapper());
@@ -111,7 +111,7 @@ public class MySqlCategoryDaoImpl implements CategoryDAO {
 
 	@Override
 	public int getCount() {
-		String sql = "SELECT COUNT(*) FROM CATEGORY";
+		String sql = "SELECT COUNT(*) FROM category";
 		int num = jdbcTemplate.queryForObject(sql, Integer.class);
 		return num;
 	}

@@ -16,13 +16,7 @@ public class TestLookupService {
 
 	@Before
 	public void setUp() throws Exception {
-		TestDaoHelper.authorDaoImpl.deleteAll();
-		TestDaoHelper.meterDaoImpl.deleteAll();
-		TestDaoHelper.tuneDaoImpl.deleteAll();
-		TestDaoHelper.categoryDaoImpl.deleteAll();
-		TestDaoHelper.hymnalDaoImpl.deleteAll();
-		TestDaoHelper.userDaoImpl.deleteAll();
-		TestDaoHelper.userTypeDaoImpl.deleteAll();
+		TestDaoHelper.deleteAll();
 	}
 
 	@Test
@@ -181,12 +175,6 @@ public class TestLookupService {
 
 	@After
 	public void tearDown() {
-		TestDaoHelper.authorDaoImpl.deleteAll();
-		TestDaoHelper.meterDaoImpl.deleteAll();
-		TestDaoHelper.tuneDaoImpl.deleteAll();
-		TestDaoHelper.categoryDaoImpl.deleteAll();
-		TestDaoHelper.hymnalDaoImpl.deleteAll();
-		TestDaoHelper.userDaoImpl.deleteAll();
-		TestDaoHelper.userTypeDaoImpl.deleteAll();
+		TestDaoHelper.deleteAll();
 	}
 }

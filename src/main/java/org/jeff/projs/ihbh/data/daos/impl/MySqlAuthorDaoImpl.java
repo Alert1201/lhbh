@@ -111,7 +111,7 @@ public class MySqlAuthorDaoImpl implements AuthorDAO {
 	}
 
 	public int getCount() {
-		String sql = "SELECT COUNT(*) FROM Authors";
+		String sql = "SELECT COUNT(*) FROM authors";
 		int num = jdbcTemplate.queryForObject(sql, Integer.class);
 		return num;
 	}

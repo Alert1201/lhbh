@@ -17,16 +17,15 @@ public class TestMySqlUsersDaoImpl {
 
 	@Before
 	public void setUp() throws Exception {
-		TestDaoHelper.userTypeDaoImpl.deleteAll();
-		TestDaoHelper.userDaoImpl.deleteAll();
+		TestDaoHelper.deleteAll();
 	}
 
 	@Test
 	public void testAdd() {
 
 		TestDaoHelper.addTwoUserTypes();
-		TestDaoHelper.userJeffDto.setTypeId(TestDaoHelper.userTypeAdmDtoId);
-
+		TestDaoHelper.userFrankDto.setTypeId(TestDaoHelper.userTypeAdmDtoId);
+		TestDaoHelper.userFrankDto.setTypeId(TestDaoHelper.userTypeAdmDtoId);
 		TestDaoHelper.userDaoImpl.add(TestDaoHelper.userFrankDto);
 		testUserDto = TestDaoHelper.userDaoImpl
 				.getUserByUserName(TestDaoHelper.userFrankDto.getUsername());
@@ -35,6 +34,7 @@ public class TestMySqlUsersDaoImpl {
 						"1", "USERS" }),
 				TestDaoHelper.userFrankDto.equals(testUserDto));
 
+		TestDaoHelper.userJeffDto.setTypeId(TestDaoHelper.userTypeUsrDtoId);
 		TestDaoHelper.userDaoImpl.add(TestDaoHelper.userJeffDto);
 		testUserDto = TestDaoHelper.userDaoImpl
 				.getUserByUserName(TestDaoHelper.userJeffDto.getUsername());
@@ -143,9 +143,9 @@ public class TestMySqlUsersDaoImpl {
 	@Test
 	public void testUpdate() {
 		TestDaoHelper.addTwoUsers();
-
-		TestDaoHelper.userDaoImpl.update(TestDaoHelper.userUpdateDto,
-				TestDaoHelper.userFrankId);
+		TestDaoHelper.userUpdateDto.setId(TestDaoHelper.userFrankId);
+		TestDaoHelper.userUpdateDto.setTypeId(TestDaoHelper.userTypeUsrDtoId);
+		TestDaoHelper.userDaoImpl.update(TestDaoHelper.userUpdateDto);
 		testUserDto = TestDaoHelper.userDaoImpl
 				.getUserById(TestDaoHelper.userFrankId);
 		// testUpdateDto and dto2 should be equal
@@ -155,7 +155,6 @@ public class TestMySqlUsersDaoImpl {
 
 	@After
 	public void tearDown() throws Exception {
-		TestDaoHelper.userDaoImpl.deleteAll();
-		TestDaoHelper.userTypeDaoImpl.deleteAll();
+		TestDaoHelper.deleteAll();
 	}
 }

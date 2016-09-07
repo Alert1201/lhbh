@@ -25,7 +25,7 @@ public class TestMySqlAuthorDaoImpl {
 
 	@Before
 	public void setUp() throws Exception {
-		TestDaoHelper.authorDaoImpl.deleteAll();
+		TestDaoHelper.deleteAll();
 	}
 
 	@Test
@@ -126,6 +126,6 @@ public class TestMySqlAuthorDaoImpl {
 
 	@After
 	public void tearDown() {
-		TestDaoHelper.authorDaoImpl.deleteAll();
+		TestDaoHelper.deleteAll();
 	}
 }

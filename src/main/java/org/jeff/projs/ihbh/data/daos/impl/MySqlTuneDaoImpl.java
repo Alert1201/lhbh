@@ -65,7 +65,7 @@ public class MySqlTuneDaoImpl implements TunesDAO {
 	@Override
 	public int delete(int id) {
 		try {
-			String sql = "DELETE from TUNES where id = :id";
+			String sql = "DELETE from tunes where id = :id";
 			MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 			namedParameters.addValue("id", id);
 			return namedParameterJdbcTemplate.update(sql, namedParameters);
@@ -145,7 +145,7 @@ public class MySqlTuneDaoImpl implements TunesDAO {
 
 	@Override
 	public int getCount() {
-		String sql = "SELECT COUNT(*) FROM TUNES";
+		String sql = "SELECT COUNT(*) FROM tunes";
 		int num = jdbcTemplate.queryForObject(sql, Integer.class);
 		return num;
 	}

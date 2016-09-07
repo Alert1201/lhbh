@@ -18,12 +18,7 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 
 	@Before
 	public void setUp() throws Exception {
-		TestDaoHelper.authorDaoImpl.deleteAll();
-		TestDaoHelper.tuneDaoImpl.deleteAll();
-		TestDaoHelper.meterDaoImpl.deleteAll();
-		TestDaoHelper.hymnalDaoImpl.deleteAll();
-		TestDaoHelper.hymnDaoImpl.deleteAll();
-		TestDaoHelper.categoryDaoImpl.deleteAll();
+		TestDaoHelper.deleteAll();
 	}
 
 	@Test
@@ -116,8 +111,8 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 	@Test
 	public void testGetHymnsByTitleMany() {
 		TestDaoHelper.addTwoHymns();
-		TestDaoHelper.hymnDaoImpl.add(new HymnDto(0, 0,"Test AND1 with","First AND3", 0, "3333", 545));
-		TestDaoHelper.hymnDaoImpl.add(new HymnDto(0, 0,"Test AND2 with","First line and4", 0, "4444", 566));
+		TestDaoHelper.hymnDaoImpl.add(new HymnDto(TestDaoHelper.hymnalTrinityId, TestDaoHelper.tuneStuttgartId,"Test AND1 with","First AND3", TestDaoHelper.authorHymnBettyId, "3333", 545));
+		TestDaoHelper.hymnDaoImpl.add(new HymnDto(TestDaoHelper.hymnalTrinityId, TestDaoHelper.tuneStuttgartId,"Test AND2 with","First line and4", TestDaoHelper.authorHymnJoeId, "4444", 566));
 		hymns = TestDaoHelper.hymnDaoImpl.getHymnsByTitle("and");
 		assertTrue(MessageUtils.getMessage("ju", "dao.getByTitleMany.fail",
 				tableName), hymns.size()==3);
@@ -126,8 +121,9 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 	@Test
 	public void testGetHymnsByFirstLine() {
 		TestDaoHelper.addTwoHymns();
-		TestDaoHelper.hymnDaoImpl.add(new HymnDto(0, 0,"Test AND1 with","First AND3", 0, "3333", 545));
-		TestDaoHelper.hymnDaoImpl.add(new HymnDto(0, 0,"Test AND2 with","First line and4", 0, "4444", 566));
+		
+		TestDaoHelper.hymnDaoImpl.add(new HymnDto(TestDaoHelper.hymnalTrinityId, TestDaoHelper.tuneStuttgartId, "Test AND1 with","First AND3", TestDaoHelper.authorHymnBettyId, "3333", 545));
+		TestDaoHelper.hymnDaoImpl.add(new HymnDto(TestDaoHelper.hymnalTrinityId, TestDaoHelper.tuneStuttgartId, "Test AND2 with","First line and4", TestDaoHelper.authorHymnJoeId, "4444", 566));
 		hymns = TestDaoHelper.hymnDaoImpl.getHymnsByFirstLine("and");
 		assertTrue(MessageUtils.getMessage("ju", "dao.getByFirstLine.fail",
 				tableName), hymns.size()==3);
@@ -182,8 +178,13 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 	@Test
 	public void testUpdate() {
 		TestDaoHelper.addTwoHymns();
-		TestDaoHelper.hymnDaoImpl.update(TestDaoHelper.hymnUpdateDto,
-				TestDaoHelper.hymnAndCanId);
+		TestDaoHelper.hymnUpdateDto.setId(TestDaoHelper.hymnAndCanId);
+		TestDaoHelper.hymnDaoImpl.add(new HymnDto(TestDaoHelper.hymnalTrinityId, 
+				TestDaoHelper.tuneStuttgartId, "Test AND2 with","First line and4", TestDaoHelper.authorHymnJoeId, "4444", 566));
+		TestDaoHelper.hymnUpdateDto.setAuthorId(TestDaoHelper.authorHymnJoeId);
+		TestDaoHelper.hymnUpdateDto.setTuneId(TestDaoHelper.tuneStuttgartId);
+		TestDaoHelper.hymnUpdateDto.setHymnalId(TestDaoHelper.hymnalTrinityId);
+		TestDaoHelper.hymnDaoImpl.update(TestDaoHelper.hymnUpdateDto);
 		testHymnDto = TestDaoHelper.hymnDaoImpl
 				.getHymnById(TestDaoHelper.hymnAndCanId);
 		// testUpdateDto and dto2 should be equal
@@ -194,6 +195,6 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 
 	@After
 	public void tearDown() throws Exception {
-
+		TestDaoHelper.deleteAll();
 	}
 }

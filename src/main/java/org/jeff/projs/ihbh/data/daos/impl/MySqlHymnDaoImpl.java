@@ -28,7 +28,7 @@ public class MySqlHymnDaoImpl implements HymnDAO {
 
 	@Override
 	public int add(HymnDto dto) {
-		String sql = "Insert into HYMNS (hymnal_id, tune_id, title, "
+		String sql = "Insert into hymns (hymnal_id, tune_id, title, "
 				+ "first_line, author_id, composed_yr, number) "
 				+ "values (:hymnalId, :tuneId, "
 				+ ":title, :firstLine, :authorId, :composed_yr, :number)";
@@ -37,22 +37,22 @@ public class MySqlHymnDaoImpl implements HymnDAO {
 	}
 
 	@Override
-	public int update(HymnDto dto, int id) {
-		String sql = "update HYMNS SET hymnal_id = :hymnalId, " + 
+	public int update(HymnDto dto) {
+		String sql = "update hymns SET hymnal_id = :hymnalId, " + 
 					 " tune_Id = :tuneId, " +
 					 " title = :title, " +
 					 " first_line = :firstLine, " +
 					 " author_id = :authorId, " +
 					 " composed_yr = :composed_yr,  " +
 					 " number = :number  " +
-					 " where id = " + id;
+					 " where id = " + dto.getId();
 		MapSqlParameterSource namedParameters = setNamedParameter(dto);
 		return namedParameterJdbcTemplate.update(sql, namedParameters);
 	}
 
 	@Override
 	public int delete(int id) {
-		String sql = "Delete from HYMNS where id = :id";
+		String sql = "Delete from hymns where id = :id";
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("id", id);
 		return namedParameterJdbcTemplate.update(sql, namedParameters);
@@ -61,7 +61,7 @@ public class MySqlHymnDaoImpl implements HymnDAO {
 	@Override
 	public HymnDto getHymnById(int id) {
 		try {
-			String sql = "Select * from HYMNS where id = ?";
+			String sql = "Select * from hymns where id = ?";
 			return jdbcTemplate.queryForObject(sql, new Object[] { id },
 					new HymnMapper());
 		} catch (EmptyResultDataAccessException e) {
@@ -72,7 +72,7 @@ public class MySqlHymnDaoImpl implements HymnDAO {
 
 	@Override
 	public List<HymnDto> getHymnsByAuthor(int authorId) {
-		String sql = "Select * from HYMNS where author_id = :authorId";
+		String sql = "Select * from hymns where author_id = :authorId";
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("authorId", authorId);
 		return namedParameterJdbcTemplate.query(sql, namedParameters,
@@ -81,7 +81,7 @@ public class MySqlHymnDaoImpl implements HymnDAO {
 
 	@Override
 	public List<HymnDto> getHymnsByCategory(int categoryId) {
-/*		String sql = "Select * from HYMNS where author_id = :authorId";
+/*		String sql = "Select * from hymns where author_id = :authorId";
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("categoryId", categoryId);
 		return namedParameterJdbcTemplate.query(sql, namedParameters,
@@ -92,7 +92,7 @@ public class MySqlHymnDaoImpl implements HymnDAO {
 	
 	@Override
 	public List<HymnDto> getHymnsByTitle(String title) {
-		String sql = "Select * from HYMNS where upper(title) LIKE upper(:title)";
+		String sql = "Select * from hymns where upper(title) LIKE upper(:title)";
 		String titleParam= "%" + title.toLowerCase().trim() + "%";
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("title", titleParam);
@@ -103,7 +103,7 @@ public class MySqlHymnDaoImpl implements HymnDAO {
 	@Override
 	public HymnDto getHymnByHymnalNumber(int hymnalId, int hymnNumber) {
 		try {
-			String sql = "Select * from HYMNS where hymnal_id = ? and number = ?";
+			String sql = "Select * from hymns where hymnal_id = ? and number = ?";
 			return jdbcTemplate.queryForObject(sql, new Object[] { hymnalId, hymnNumber },
 					new HymnMapper());
 		} catch (EmptyResultDataAccessException e) {
@@ -114,7 +114,7 @@ public class MySqlHymnDaoImpl implements HymnDAO {
 
 	@Override
 	public List<HymnDto> getHymnsByTune(int tuneId) {
-		String sql = "Select * from HYMNS where tune_id = :tuneId";
+		String sql = "Select * from hymns where tune_id = :tuneId";
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("tuneId", tuneId);
 		return namedParameterJdbcTemplate.query(sql, namedParameters,
@@ -123,7 +123,7 @@ public class MySqlHymnDaoImpl implements HymnDAO {
 
 	@Override
 	public List<HymnDto> getHymnsByFirstLine(String firstLine) {
-		String sql = "Select * from HYMNS where upper(first_line) LIKE upper(:firstLine)";
+		String sql = "Select * from hymns where upper(first_line) LIKE upper(:firstLine)";
 		String firstLineParam= "%" + firstLine.toLowerCase().trim() + "%";
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("firstLine", firstLineParam);
@@ -133,19 +133,19 @@ public class MySqlHymnDaoImpl implements HymnDAO {
 
 	@Override
 	public List<HymnDto> getAll() {
-		String sql = "Select * from HYMNS";
+		String sql = "Select * from hymns";
 		return jdbcTemplate.query(sql, new HymnMapper());
 	}
 
 	@Override
 	public int deleteAll() {
-		String sql = "DELETE from HYMNS";
+		String sql = "DELETE from hymns";
 		return jdbcTemplate.update(sql);
 	}
 
 	@Override
 	public int getCount() {
-		String sql = "SELECT COUNT(*) FROM HYMNS";
+		String sql = "SELECT COUNT(*) FROM hymns";
 		int num = jdbcTemplate.queryForObject(sql, Integer.class);
 		return num;
 	}

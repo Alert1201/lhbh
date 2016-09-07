@@ -2,6 +2,7 @@ package org.jeff.projs.ihbh.data.daos;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Date;
 import java.util.List;
 
 import org.jeff.projs.ihbh.data.daos.impl.MySqlAuthorDaoImpl;
@@ -9,7 +10,7 @@ import org.jeff.projs.ihbh.data.daos.impl.MySqlCategoryDaoImpl;
 import org.jeff.projs.ihbh.data.daos.impl.MySqlHymnDaoImpl;
 import org.jeff.projs.ihbh.data.daos.impl.MySqlHymnalDaoImpl;
 import org.jeff.projs.ihbh.data.daos.impl.MySqlMeterDaoImpl;
-import org.jeff.projs.ihbh.data.daos.impl.MySqlSaveStateDaoImpl;
+import org.jeff.projs.ihbh.data.daos.impl.MySqlPlayListDaoImpl;
 import org.jeff.projs.ihbh.data.daos.impl.MySqlTuneDaoImpl;
 import org.jeff.projs.ihbh.data.daos.impl.MySqlUserDaoImpl;
 import org.jeff.projs.ihbh.data.daos.impl.MySqlUserTypeDaoImpl;
@@ -18,7 +19,7 @@ import org.jeff.projs.ihbh.data.domains.CategoryDto;
 import org.jeff.projs.ihbh.data.domains.HymnDto;
 import org.jeff.projs.ihbh.data.domains.HymnalDto;
 import org.jeff.projs.ihbh.data.domains.MeterDto;
-import org.jeff.projs.ihbh.data.domains.SaveStateDto;
+import org.jeff.projs.ihbh.data.domains.PlayListDto;
 import org.jeff.projs.ihbh.data.domains.TuneDto;
 import org.jeff.projs.ihbh.data.domains.UserDto;
 import org.jeff.projs.ihbh.data.domains.UserTypeDto;
@@ -32,6 +33,9 @@ public class TestDaoHelper {
 	public static ApplicationContext ctx = new ClassPathXmlApplicationContext(
 			"test-application-context.xml");
 
+	public static MySqlPlayListDaoImpl playListDaoImpl = ctx
+			.getBean(MySqlPlayListDaoImpl.class);
+	
 	public static MySqlCategoryDaoImpl categoryDaoImpl = ctx
 			.getBean(MySqlCategoryDaoImpl.class);
 	
@@ -43,8 +47,8 @@ public class TestDaoHelper {
 
 	public static MySqlUserDaoImpl userDaoImpl = ctx.getBean(MySqlUserDaoImpl.class);
 
-	public static MySqlSaveStateDaoImpl stDaoImpl = ctx
-			.getBean(MySqlSaveStateDaoImpl.class);
+	public static MySqlPlayListDaoImpl stDaoImpl = ctx
+			.getBean(MySqlPlayListDaoImpl.class);
 
 	public static MySqlAuthorDaoImpl authorDaoImpl = ctx
 			.getBean(MySqlAuthorDaoImpl.class);
@@ -60,6 +64,21 @@ public class TestDaoHelper {
 	// Setup Dtos
 	/***************************************/
 
+	//PlayList DTO setup
+	//String name, String description, boolean repeat, int speed, boolean def, int volume,
+	// Date lastUsed
+	static PlayListDto jeffs1stPlayList = new PlayListDto("Jeffs 1st","Holy Holy Holy For me - Base Emph", false, 30, false, 33, 
+			new java.sql.Date(new java.util.Date().getTime()),0);
+	static PlayListDto franks1stPlayList = new PlayListDto("Jeffs 2nd","What ere My God Ordains - Suprano All", false, 30, false, 33, 
+			new java.sql.Date(new java.util.Date().getTime()),0) ;
+	static PlayListDto jeffs2ndPlayList = new PlayListDto("Franks 1st","Great is they Faithfulness - Tenor All", false, 30, false, 33, 
+			new java.sql.Date(new java.util.Date().getTime()),0);
+	static PlayListDto franks2ndPlayList = new PlayListDto("Franks 2nd","How Great Thou Art - Bass All", false, 30, false, 33, 
+			new java.sql.Date(new java.util.Date().getTime()),0) ;
+	static PlayListDto updatedPlayList = new PlayListDto("Updated","Updated Desc", true, 0, true, 0, 
+			new java.sql.Date(new java.util.Date().getTime()),0) ;
+	
+	
 	//Hymn DTO setup
 	static HymnDto hymnHowGrDto = new HymnDto(0, 0,"How Great Thou Art","When peace like a river", 0, "1980", 345);
 	static HymnDto hymnAndCanDto = new HymnDto(0, 0,"And Can it Be","And can it be that I should gain.", 0, "1980", 333);
@@ -89,7 +108,6 @@ public class TestDaoHelper {
 	static int meter4Id;
 
 	// Author DTO Setup
-
 	static AuthorDto authorTuneTimDto = new AuthorDto("Jeff", "Sulman", "03",
 			"1459", "05", "1890", "1460", "1891", "German", new byte[0]);
 	static AuthorDto authorTuneBillDto = new AuthorDto("Bill", "Brown", "06",
@@ -107,14 +125,6 @@ public class TestDaoHelper {
 			"6565", "55", "0000", "3333", "8888", "Lunar", new byte[0]);
 	static int authorHymnJoeId;
 	static int authorHymnBettyId;
-
-	// Save State DTO Setup
-	static SaveStateDto firstSaveStateDto = new SaveStateDto(0, 1, 2, 3);
-	static SaveStateDto secondSaveStateDto = new SaveStateDto(0, 4, 5, 6);
-	static SaveStateDto updateSaveStateDto = new SaveStateDto(0, 7, 8, 9);
-
-	static int firstSaveStateId;
-	static int secondSaveStateId;
 
 	// Category DTO Setup
 	static CategoryDto level1NoPar1 = new CategoryDto(
@@ -182,6 +192,19 @@ public class TestDaoHelper {
 	static public String[] lkpUserUserName = {"BillZ", "FrankT", "JeffA"};
 
 	static public int parIdLookup;
+	
+	static public void deleteAll(){
+		playListDaoImpl.deleteAll();
+		hymnDaoImpl.deleteAll();
+		tuneDaoImpl.deleteAll();
+		meterDaoImpl.deleteAll();
+		authorDaoImpl.deleteAll();
+		categoryDaoImpl.deleteAll();
+		hymnalDaoImpl.deleteAll();
+		userDaoImpl.deleteAll();
+		userTypeDaoImpl.deleteAll();
+	}
+	
 	
 	// Author
 	static public void addAuthorLookup(){
@@ -353,17 +376,6 @@ public class TestDaoHelper {
 	}
 
 	
-	static void addTwoSavedStates() {
-		addTwoUsers();
-		firstSaveStateDto.setUserId(userJeffId);
-		secondSaveStateDto.setUserId(userFrankId);
-		stDaoImpl.add(firstSaveStateDto);
-		stDaoImpl.add(secondSaveStateDto);
-		firstSaveStateId = (stDaoImpl.getSaveStateByUserId(userJeffId)).getId();
-		secondSaveStateId = (stDaoImpl.getSaveStateByUserId(userFrankId))
-				.getId();
-	}
-	
 	static void addTwoTuneAuthors() {
 		TestDaoHelper.authorDaoImpl.add(TestDaoHelper.authorTuneTimDto);
 		TestDaoHelper.authorDaoImpl.add(TestDaoHelper.authorTuneBillDto);
@@ -384,7 +396,7 @@ public class TestDaoHelper {
 				authorTuneTimDto.getId(), "German");
 		tuneLastUnsDto = new TuneDto("Last Uns Erfreuen", meter4Dto.getId(), "1622",
 				authorTuneBillDto.getId(), "French");
-		tuneUpdateDto = new TuneDto("CCCCCCC", 0, "3333", 3, "Swaheely");
+		tuneUpdateDto = new TuneDto("CCCCCCC", meter4Dto.getId(), "3333", authorTuneBillDto.getId(), "Swaheely");
 		tuneDaoImpl.add(tuneStuttgartDto);
 		tuneDaoImpl.add(tuneLastUnsDto);
 		tuneStuttgartId = tuneDaoImpl.getTuneByName(tuneStuttgartDto.getName())
@@ -410,7 +422,19 @@ public class TestDaoHelper {
 		userFrankDto.setId(userFrankId);
 		
 	}
-	
+	static void addFourPlayLists(){
+		addTwoUsers();
+		userJeffDto.getId();
+		userFrankDto.getId();
+		jeffs1stPlayList.setUserId(userJeffDto.getId());
+		jeffs2ndPlayList.setUserId(userJeffDto.getId());
+		franks1stPlayList.setUserId(userFrankDto.getId());
+		franks2ndPlayList.setUserId(userFrankDto.getId());
+		playListDaoImpl.add(jeffs1stPlayList);
+		playListDaoImpl.add(jeffs2ndPlayList);
+		playListDaoImpl.add(franks1stPlayList);
+		playListDaoImpl.add(franks2ndPlayList);
+	}
 	static void addTwoUserTypes() {
 		userTypeDaoImpl.add(userTypeAdmDto);
 		userTypeDaoImpl.add(userTypeUsrDto);
@@ -439,9 +463,13 @@ public class TestDaoHelper {
 	}
 	
 	static public void addUsersLookup(){
-		userDaoImpl.add(new UserDto("Frank", "Tetra","FrankT", "FrankT@gmail.com"));
-		userDaoImpl.add(new UserDto("Bill", "Zeta","BillZ", "BillZ@gmail.com"));
-		userDaoImpl.add(new UserDto("Jeff", "Alpha","JeffA", "JeffA@gmail.com"));
+		userTypeDaoImpl.add(new UserTypeDto("User", "USR"));
+		userTypeDaoImpl.add(new UserTypeDto("Administrator", "ADM"));
+		int admnUserType = userTypeDaoImpl.getUserTypeByUserType("ADM").getId();
+		int usrUserType = userTypeDaoImpl.getUserTypeByUserType("USR").getId();
+		userDaoImpl.add(new UserDto("Frank", "Tetra","FrankT", "FrankT@gmail.com", admnUserType));
+		userDaoImpl.add(new UserDto("Bill", "Zeta","BillZ", "BillZ@gmail.com", usrUserType));
+		userDaoImpl.add(new UserDto("Jeff", "Alpha","JeffA", "JeffA@gmail.com", usrUserType));
 	}
 	
 	static public void addUserTypeLookup(){

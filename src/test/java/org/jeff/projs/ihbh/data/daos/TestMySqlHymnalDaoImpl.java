@@ -25,7 +25,7 @@ public class TestMySqlHymnalDaoImpl {
 	
 	@Before
 	public void setUp() throws Exception {
-		TestDaoHelper.hymnalDaoImpl.deleteAll();
+		TestDaoHelper.deleteAll();
 	}
 
 	/**
@@ -33,7 +33,7 @@ public class TestMySqlHymnalDaoImpl {
 	 */
 	@After
 	public void tearDown() throws Exception {
-		TestDaoHelper.hymnalDaoImpl.deleteAll();
+		TestDaoHelper.deleteAll();
 	}
 
 	@Test
@@ -68,7 +68,6 @@ public class TestMySqlHymnalDaoImpl {
 				tableName), testDto.equals(TestDaoHelper.hymnalTrinityDto));
 	}
 	
-	//s
 	@Test
 	public void testGetByAbbreviation(){
 		//Test getByAbbreviation
@@ -78,7 +77,6 @@ public class TestMySqlHymnalDaoImpl {
 				tableName), testDto.equals(TestDaoHelper.hymnalTrinityDto));
 	}
 	
-	
 	@Test
 	public void testGetById(){
 		TestDaoHelper.addTwoHymnals();
@@ -86,7 +84,6 @@ public class TestMySqlHymnalDaoImpl {
 		assertTrue(MessageUtils.getMessage("ju", "dao.getById.fail", tableName),
 				TestDaoHelper.hymnalTrinityDto.equals(testDto));	
 	}
-	
 	
 	@Test
 	public void testUpdate(){
@@ -98,7 +95,6 @@ public class TestMySqlHymnalDaoImpl {
 		assertTrue(MessageUtils.getMessage("ju", "dao.update.fail", tableName), 
 				TestDaoHelper.hymnalUpateDto.equals(testDto));
 	}
-	
 	
 	@Test
 	public void testDeleteAll(){

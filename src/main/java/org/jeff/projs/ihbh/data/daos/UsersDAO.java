@@ -7,7 +7,7 @@ import org.jeff.projs.ihbh.data.domains.UserDto;
 
 public interface UsersDAO {
 	public int add(UserDto  dto);
-	public int update(UserDto dto, int id);
+	public int update(UserDto dto);
 	public int delete(int id);
 	public UserDto getUserById(int id);
 	public UserDto getUserByUserName(String userName);

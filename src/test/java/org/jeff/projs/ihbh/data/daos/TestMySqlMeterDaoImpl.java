@@ -17,7 +17,7 @@ public class TestMySqlMeterDaoImpl implements TestDaoImpls {
 
 	@Before
 	public void setUp() throws Exception {
-		TestDaoHelper.meterDaoImpl.deleteAll();
+		TestDaoHelper.deleteAll();
 	}
 
 	@Test
@@ -107,10 +107,9 @@ public class TestMySqlMeterDaoImpl implements TestDaoImpls {
 				TestDaoHelper.meterDaoImpl.getCount() == 0);
 	}
 	
-
 	@After
 	public void tearDown() throws Exception {
-		TestDaoHelper.meterDaoImpl.deleteAll();
+		TestDaoHelper.deleteAll();
 	}
 
 }

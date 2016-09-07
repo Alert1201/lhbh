@@ -6,7 +6,7 @@ import org.jeff.projs.ihbh.data.domains.HymnDto;
 
 public interface HymnDAO {
 	public int add(HymnDto  dto);
-	public int update(HymnDto dto, int id);
+	public int update(HymnDto dto);
 	public int delete(int id);
 	public HymnDto getHymnById(int id);
 	public List<HymnDto> getAll();

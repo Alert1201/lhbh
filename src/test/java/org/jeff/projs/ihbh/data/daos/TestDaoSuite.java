@@ -7,7 +7,6 @@ import org.jeff.projs.ihbh.data.daos.TestMySqlCategoryDaoImpl;
 import org.jeff.projs.ihbh.data.daos.TestMySqlHymnDaoImpl;
 import org.jeff.projs.ihbh.data.daos.TestMySqlHymnalDaoImpl;
 import org.jeff.projs.ihbh.data.daos.TestMySqlMeterDaoImpl;
-import org.jeff.projs.ihbh.data.daos.TestMySqlSaveStateDaoImpl;
 import org.jeff.projs.ihbh.data.daos.TestMySqlTunesDaoImpl;
 import org.jeff.projs.ihbh.data.daos.TestMySqlUserTypesDaoImpl;
 import org.jeff.projs.ihbh.data.daos.TestMySqlUsersDaoImpl;
@@ -18,11 +17,11 @@ import org.jeff.projs.ihbh.data.daos.TestMySqlUsersDaoImpl;
 	TestMySqlHymnalDaoImpl.class,
 	TestMySqlAuthorDaoImpl.class,
 	TestMySqlCategoryDaoImpl.class,
-	TestMySqlSaveStateDaoImpl.class,
 	TestMySqlTunesDaoImpl.class,
 	TestMySqlUserTypesDaoImpl.class,
 	TestMySqlUsersDaoImpl.class,
-	TestMySqlHymnDaoImpl.class
+	TestMySqlHymnDaoImpl.class,
+	TestMySqlPlayListDaoImpl.class
 })
 public class TestDaoSuite {   
 } 

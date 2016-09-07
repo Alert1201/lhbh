@@ -39,10 +39,10 @@ public class MySqlUserDaoImpl implements UsersDAO {
 	}
 
 	@Override
-	public int update(UserDto dto, int updateId) {
-		String sql = "update USERS SET username = :username," + "first_name = :firstName, " + "last_name = :lastName, "
+	public int update(UserDto dto) {
+		String sql = "update users SET username = :username," + "first_name = :firstName, " + "last_name = :lastName, "
 				+ "hashed_password = :hashedPassword, " + "type_id = :typeId, " + "email = :email," + "salt = :salt "
-				+ "where id = " + updateId + ";";
+				+ "where id = " + dto.getId() + ";";
 		MapSqlParameterSource namedParameters = setNamedParameter(dto);
 		return namedParameterJdbcTemplate.update(sql, namedParameters);
 	}
@@ -50,7 +50,7 @@ public class MySqlUserDaoImpl implements UsersDAO {
 	@Override
 	public int delete(int id) {
 		try {
-			String sql = "DELETE from USERS where id = :id";
+			String sql = "DELETE from users where id = :id";
 			MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 			namedParameters.addValue("id", id);
 			return namedParameterJdbcTemplate.update(sql, namedParameters);
@@ -61,13 +61,13 @@ public class MySqlUserDaoImpl implements UsersDAO {
 
 	@Override
 	public UserDto getUserById(int id) {
-		String sql = "Select * from USERS where id = ?";
+		String sql = "Select * from users where id = ?";
 		return jdbcTemplate.queryForObject(sql, new Object[] { id }, new UserMapper());
 	}
 
 	@Override
 	public List<UserDto> getUsersByUserTypeId(int userTypeId) {
-		String sql = "Select * from USERS where type_id = :typeId";
+		String sql = "Select * from users where type_id = :typeId";
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 		namedParameters.addValue("typeId", userTypeId);
 		return namedParameterJdbcTemplate.query(sql, namedParameters, new UserMapper());
@@ -75,14 +75,14 @@ public class MySqlUserDaoImpl implements UsersDAO {
 
 	@Override
 	public UserDto getUserByUserName(String userName) {
-		String sql = "Select * from USERS where username = ?";
+		String sql = "Select * from users where username = ?";
 		return jdbcTemplate.queryForObject(sql, new Object[] { userName }, new UserMapper());
 	}
 
 	@Override
 	public UserDto getUserByFullName(String firstName, String lastName) {
 		try {
-			String sql = "Select * from USERS where first_name = ? and last_name = ?";
+			String sql = "Select * from users where first_name = ? and last_name = ?";
 			return jdbcTemplate.queryForObject(sql, new Object[] { firstName, lastName }, new UserMapper());
 		} catch (EmptyResultDataAccessException e) {
 			log.info("getUserByFullName returns null");
@@ -92,19 +92,19 @@ public class MySqlUserDaoImpl implements UsersDAO {
 
 	@Override
 	public List<UserDto> getAll() {
-		String sql = "Select * from USERS";
+		String sql = "Select * from users";
 		return jdbcTemplate.query(sql, new UserMapper());
 	}
 
 	@Override
 	public int deleteAll() {
-		String sql = "DELETE from USERS";
+		String sql = "DELETE from users";
 		return jdbcTemplate.update(sql);
 	}
 
 	@Override
 	public int getCount() {
-		String sql = "SELECT COUNT(*) FROM USERS";
+		String sql = "SELECT COUNT(*) FROM users";
 		int num = jdbcTemplate.queryForObject(sql, Integer.class);
 		return num;
 	}

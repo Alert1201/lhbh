@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.jeff.projs.ihbh.data.domains.UserTypeDto;
 import org.jeff.projs.ihbh.utils.MessageUtils;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,7 +17,7 @@ public class TestMySqlUserTypesDaoImpl implements TestDaoImpls {
 
 	@Before
 	public void setUp() throws Exception {
-		TestDaoHelper.userTypeDaoImpl.deleteAll();
+		TestDaoHelper.deleteAll();
 	}
 
 	@Test
@@ -49,7 +50,7 @@ public class TestMySqlUserTypesDaoImpl implements TestDaoImpls {
 				.getUserTypeById(TestDaoHelper.userTypeAdmDtoId);
 		// testUpdateDto and dto2 should be equal
 		assertTrue(MessageUtils.getMessage("ju", "dao.update.fail", tableName),
-				TestDaoHelper.userTypeAdmDto.equals(testUpdateDto));
+				TestDaoHelper.userTypeUpdateDto.equals(testUpdateDto));
 	}
 
 	@Test
@@ -112,8 +113,8 @@ public class TestMySqlUserTypesDaoImpl implements TestDaoImpls {
 				count == 2);
 	}
 
-	@Override
+	@After
 	public void tearDown() throws Exception {
-
+		TestDaoHelper.deleteAll();
 	}
 }
