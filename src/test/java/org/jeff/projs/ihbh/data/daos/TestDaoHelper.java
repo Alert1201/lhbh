@@ -11,6 +11,7 @@ import org.jeff.projs.ihbh.data.daos.impl.MySqlHymnDaoImpl;
 import org.jeff.projs.ihbh.data.daos.impl.MySqlHymnalDaoImpl;
 import org.jeff.projs.ihbh.data.daos.impl.MySqlMeterDaoImpl;
 import org.jeff.projs.ihbh.data.daos.impl.MySqlPlayListDaoImpl;
+import org.jeff.projs.ihbh.data.daos.impl.MySqlPlayListDetailDaoImpl;
 import org.jeff.projs.ihbh.data.daos.impl.MySqlTuneDaoImpl;
 import org.jeff.projs.ihbh.data.daos.impl.MySqlUserDaoImpl;
 import org.jeff.projs.ihbh.data.daos.impl.MySqlUserTypeDaoImpl;
@@ -19,6 +20,7 @@ import org.jeff.projs.ihbh.data.domains.CategoryDto;
 import org.jeff.projs.ihbh.data.domains.HymnDto;
 import org.jeff.projs.ihbh.data.domains.HymnalDto;
 import org.jeff.projs.ihbh.data.domains.MeterDto;
+import org.jeff.projs.ihbh.data.domains.PlayListDetailDto;
 import org.jeff.projs.ihbh.data.domains.PlayListDto;
 import org.jeff.projs.ihbh.data.domains.TuneDto;
 import org.jeff.projs.ihbh.data.domains.UserDto;
@@ -29,12 +31,17 @@ import org.jeff.projs.ihbh.utils.SecurityHelper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 public class TestDaoHelper {
 	public static ApplicationContext ctx = new ClassPathXmlApplicationContext(
 			"test-application-context.xml");
 
 	public static MySqlPlayListDaoImpl playListDaoImpl = ctx
 			.getBean(MySqlPlayListDaoImpl.class);
+	
+	public static MySqlPlayListDetailDaoImpl playListDetailDaoImpl = ctx
+			.getBean(MySqlPlayListDetailDaoImpl.class);
 	
 	public static MySqlCategoryDaoImpl categoryDaoImpl = ctx
 			.getBean(MySqlCategoryDaoImpl.class);
@@ -64,24 +71,52 @@ public class TestDaoHelper {
 	// Setup Dtos
 	/***************************************/
 
+	//PlayList DTO
+	// part 1 = suprano  type 1 = Solo  
+	// part 2 = alto	 type 2 = Emph
+	// part 3 = tenor	 type 3 = Normal
+	// part 4 = bass
+	// int playListId, int hymnId, int part, int type
+	static PlayListDetailDto playListJeffs1stHolyHolyHoly1Dto = new PlayListDetailDto(0, 0, 1, 1);
+	static PlayListDetailDto playListJeffs1stHolyHolyHoly2Dto = new PlayListDetailDto(0, 0, 1, 2);
+	static PlayListDetailDto playListJeffs1stHolyHolyHoly3Dto = new PlayListDetailDto(0, 0, 1, 3);
+	static PlayListDetailDto playListJeffs1stHolyHolyHoly4Dto = new PlayListDetailDto(0, 0, 2, 2);
+
+	static PlayListDetailDto playListJeffs1stAndCanItBe1Dto = new PlayListDetailDto(0, 0, 1, 1);
+	static PlayListDetailDto playListJeffs1stAndCanItBe2Dto = new PlayListDetailDto(0, 0, 1, 2);
+	static PlayListDetailDto playListJeffs1stAndCanItBe3Dto = new PlayListDetailDto(0, 0, 1, 3);
+	
+	static PlayListDetailDto playListFranks1stGreatIsThyFai1Dto = new PlayListDetailDto(0, 0, 2, 1);
+	static PlayListDetailDto playListFranks1stGreatIsThyFai2Dto = new PlayListDetailDto(0, 0, 2, 2);
+	static PlayListDetailDto playListFranks1stGreatIsThyFai3Dto = new PlayListDetailDto(0, 0, 2, 3);
+
+	static PlayListDetailDto playListJeffs1stItIsWell1Dto = new PlayListDetailDto(0, 0, 4, 1);
+	static PlayListDetailDto playListJeffs1stItIsWell2Dto = new PlayListDetailDto(0, 0, 4, 2);
+	static PlayListDetailDto playListJeffs1stItIsWell3Dto = new PlayListDetailDto(0, 0, 4, 3);
+	
 	//PlayList DTO setup
-	//String name, String description, boolean repeat, int speed, boolean def, int volume,
-	// Date lastUsed
-	static PlayListDto jeffs1stPlayList = new PlayListDto("Jeffs 1st","Holy Holy Holy For me - Base Emph", false, 30, false, 33, 
+	static PlayListDto jeffs1stPlayList = new PlayListDto("Jeffs 1st","Holy Holy Holy - Base All", false, 30, false, 33, 
 			new java.sql.Date(new java.util.Date().getTime()),0);
-	static PlayListDto franks1stPlayList = new PlayListDto("Jeffs 2nd","What ere My God Ordains - Suprano All", false, 30, false, 33, 
+	static PlayListDto franks1stPlayList = new PlayListDto("Jeffs 2nd","And Can it Be - Suprano All", false, 30, false, 33, 
 			new java.sql.Date(new java.util.Date().getTime()),0) ;
-	static PlayListDto jeffs2ndPlayList = new PlayListDto("Franks 1st","Great is they Faithfulness - Tenor All", false, 30, false, 33, 
+	static PlayListDto jeffs2ndPlayList = new PlayListDto("Franks 1st","Holy Holy Holy - Tenor All", false, 30, false, 33, 
 			new java.sql.Date(new java.util.Date().getTime()),0);
-	static PlayListDto franks2ndPlayList = new PlayListDto("Franks 2nd","How Great Thou Art - Bass All", false, 30, false, 33, 
+	static PlayListDto franks2ndPlayList = new PlayListDto("Franks 2nd","And Can it Be - Bass All", false, 30, false, 33, 
 			new java.sql.Date(new java.util.Date().getTime()),0) ;
 	static PlayListDto updatedPlayList = new PlayListDto("Updated","Updated Desc", true, 0, true, 0, 
 			new java.sql.Date(new java.util.Date().getTime()),0) ;
+	static int jeffs1stPlayListId;
+	static int jeffs2ndPlayListId;
+	static int franks1stPlayListId;
+	static int franks2ndPlayListId;
 	
 	
 	//Hymn DTO setup
+	// Constructor hymnId, tuneId, title, first line, author, comp yr, number
 	static HymnDto hymnHowGrDto = new HymnDto(0, 0,"How Great Thou Art","When peace like a river", 0, "1980", 345);
 	static HymnDto hymnAndCanDto = new HymnDto(0, 0,"And Can it Be","And can it be that I should gain.", 0, "1980", 333);
+	static HymnDto hymnWhatEreMyGod = new HymnDto(0, 0,"What Ere My God Ordains","What ere my God ordains is right", 0, "1985", 445);
+	static HymnDto hymnOCome = new HymnDto(0, 0,"O Come All Ye Faithful","O come ye faithful, joyful new adore thee.", 0, "1989", 993);
 	static HymnDto hymnUpdateDto = new HymnDto(0, 0,"XXX xx CCCC","FirsLine la lala", 0, "3333", 111);
 	static int hymnHowGrId;
 	static int hymnAndCanId;
@@ -194,6 +229,7 @@ public class TestDaoHelper {
 	static public int parIdLookup;
 	
 	static public void deleteAll(){
+		playListDetailDaoImpl.deleteAll();
 		playListDaoImpl.deleteAll();
 		hymnDaoImpl.deleteAll();
 		tuneDaoImpl.deleteAll();
@@ -301,12 +337,12 @@ public class TestDaoHelper {
 		hymnalDaoImpl.add(new HymnalDto("Family","FAM"));
 		hymnalDaoImpl.add(new HymnalDto("Psalter","PSA"));
 	}
-	static public void addMeterLookup(){
+	static public void addMeterLookup() throws MySQLIntegrityConstraintViolationException{
 		meterDaoImpl.add(new MeterDto("8.8.8.8"));
 		meterDaoImpl.add(new MeterDto("1.1.1.1"));
 		meterDaoImpl.add(new MeterDto("9.9.9.9"));
 	}
-	static public void addTunesLookup(){
+	static public void addTunesLookup() throws MySQLIntegrityConstraintViolationException{
 		addAuthorLookup();
 		addMeterLookup();
 		int meterIdOne = meterDaoImpl.getMeterByMeter("8.8.8.8").getId();
@@ -343,9 +379,10 @@ public class TestDaoHelper {
 	}
 	/***************************************/
 	// Database Setup 
-	/***************************************/
+	/**
+	 * @throws MySQLIntegrityConstraintViolationException *************************************/
 	
-	static void addTwoHymns() {
+	static void addTwoHymns() throws MySQLIntegrityConstraintViolationException {
 		addTwoTunes();
 		addTwoHymnals();
 		addFirstMainAndChildren();
@@ -354,9 +391,16 @@ public class TestDaoHelper {
 		TestDaoHelper.hymnAndCanDto.setHymnalId(TestDaoHelper.hymnalTrinityId);
 		TestDaoHelper.hymnAndCanDto.setAuthorId(TestDaoHelper.authorHymnBettyId);
 		TestDaoHelper.hymnAndCanDto.setTuneId(TestDaoHelper.tuneStuttgartId);
+		
 		TestDaoHelper.hymnHowGrDto.setHymnalId(TestDaoHelper.hymnalTrinityId);
 		TestDaoHelper.hymnHowGrDto.setAuthorId(TestDaoHelper.authorHymnJoeId);
 		TestDaoHelper.hymnHowGrDto.setTuneId(TestDaoHelper.tuneLastUnsId);
+		
+		TestDaoHelper.hymnWhatEreMyGod.setHymnalId(TestDaoHelper.hymnalTrinityId);
+		TestDaoHelper.hymnWhatEreMyGod.setTuneId(TestDaoHelper.tuneStuttgartId);
+		TestDaoHelper.hymnOCome.setHymnalId(TestDaoHelper.hymnalTrinityId);
+		TestDaoHelper.hymnOCome.setTuneId(TestDaoHelper.tuneLastUnsId);
+		
 		TestDaoHelper.hymnDaoImpl.add(TestDaoHelper.hymnHowGrDto);
 		TestDaoHelper.hymnDaoImpl.add(TestDaoHelper.hymnAndCanDto);
 		hymnAndCanId = TestDaoHelper.hymnDaoImpl
@@ -365,7 +409,7 @@ public class TestDaoHelper {
 		hymnHowGrId = TestDaoHelper.hymnDaoImpl
 				.getHymnsByTitle("How Great Thou Art").get(0).getId();
 			}
-	static void addTwoMeters() {
+	static void addTwoMeters() throws MySQLIntegrityConstraintViolationException {
 		meterDaoImpl.add(meter8Dto);
 		meterDaoImpl.add(meter4Dto);
 		// Store IDs
@@ -389,7 +433,7 @@ public class TestDaoHelper {
 		authorTuneBillDto.setId(authorTuneBillId);
 	}
 	
-	static void addTwoTunes() {
+	static void addTwoTunes() throws MySQLIntegrityConstraintViolationException {
 		addTwoTuneAuthors();
 		addTwoMeters();
 		tuneStuttgartDto = new TuneDto("Stuttgart", meter8Dto.getId(), "1715",
@@ -424,8 +468,6 @@ public class TestDaoHelper {
 	}
 	static void addFourPlayLists(){
 		addTwoUsers();
-		userJeffDto.getId();
-		userFrankDto.getId();
 		jeffs1stPlayList.setUserId(userJeffDto.getId());
 		jeffs2ndPlayList.setUserId(userJeffDto.getId());
 		franks1stPlayList.setUserId(userFrankDto.getId());
@@ -434,7 +476,39 @@ public class TestDaoHelper {
 		playListDaoImpl.add(jeffs2ndPlayList);
 		playListDaoImpl.add(franks1stPlayList);
 		playListDaoImpl.add(franks2ndPlayList);
+		List<PlayListDto> list = playListDaoImpl.getAllByUser(userJeffDto.getId());
+		jeffs1stPlayListId = list.get(0).getId();
+		list = playListDaoImpl.getAllByUser(userFrankDto.getId());
+		franks1stPlayListId = list.get(0).getId();
 	}
+	
+	static void addPlayListDetails() throws MySQLIntegrityConstraintViolationException {
+	//	addTwoUsers();
+		addTwoHymns();
+		addFourPlayLists();
+		playListJeffs1stHolyHolyHoly1Dto.setHymnId(hymnAndCanId);
+		playListJeffs1stHolyHolyHoly2Dto.setHymnId(hymnAndCanId);
+		playListJeffs1stHolyHolyHoly3Dto.setHymnId(hymnHowGrId);
+		playListJeffs1stHolyHolyHoly1Dto.setPlayListId(jeffs1stPlayListId);
+		playListJeffs1stHolyHolyHoly2Dto.setPlayListId(jeffs1stPlayListId);
+		playListJeffs1stHolyHolyHoly3Dto.setPlayListId(jeffs1stPlayListId);
+		
+		playListFranks1stGreatIsThyFai1Dto.setHymnId(hymnHowGrId);
+		playListFranks1stGreatIsThyFai2Dto.setHymnId(hymnHowGrId);
+		playListFranks1stGreatIsThyFai3Dto.setHymnId(hymnAndCanId);
+		playListFranks1stGreatIsThyFai1Dto.setPlayListId(franks1stPlayListId);
+		playListFranks1stGreatIsThyFai2Dto.setPlayListId(franks1stPlayListId);
+		playListFranks1stGreatIsThyFai3Dto.setPlayListId(franks1stPlayListId);
+		
+		playListDetailDaoImpl.add(playListJeffs1stHolyHolyHoly1Dto);
+		playListDetailDaoImpl.add(playListJeffs1stHolyHolyHoly2Dto);
+		playListDetailDaoImpl.add(playListJeffs1stHolyHolyHoly3Dto);
+		
+		playListDetailDaoImpl.add(playListFranks1stGreatIsThyFai1Dto);
+		playListDetailDaoImpl.add(playListFranks1stGreatIsThyFai2Dto);
+		playListDetailDaoImpl.add(playListFranks1stGreatIsThyFai3Dto);
+	}
+	
 	static void addTwoUserTypes() {
 		userTypeDaoImpl.add(userTypeAdmDto);
 		userTypeDaoImpl.add(userTypeUsrDto);
@@ -446,7 +520,7 @@ public class TestDaoHelper {
 				userTypeUsrDto.getUserType()).getId();
 	}
 	
-	static void addTwoWholeTunes() {
+	static void addTwoWholeTunes() throws MySQLIntegrityConstraintViolationException {
 		addTwoTuneAuthors();
 		addTwoMeters();
 		tuneStuttgartDto = new TuneDto("Stuttgart", meter8Dto, "1715",

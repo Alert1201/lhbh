@@ -13,6 +13,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 public class TestMySqlTunesDaoImpl {
 
 	TuneDto testTuneDto;
@@ -25,7 +27,7 @@ public class TestMySqlTunesDaoImpl {
 	}
 
 	@Test
-	public void add() {
+	public void add() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoTuneAuthors();
 		TestDaoHelper.addTwoMeters();
 
@@ -48,7 +50,7 @@ public class TestMySqlTunesDaoImpl {
 	}
 
 	@Test
-	public void testUpdate() {
+	public void testUpdate() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoTunes();
 		TestDaoHelper.tuneUpdateDto.setId(TestDaoHelper.tuneStuttgartId);
 		TestDaoHelper.tuneDaoImpl.update(TestDaoHelper.tuneUpdateDto);
@@ -60,7 +62,7 @@ public class TestMySqlTunesDaoImpl {
 	}
 
 	@Test
-	public void testDelete() {
+	public void testDelete() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoTunes();
 
 		int count = TestDaoHelper.tuneDaoImpl.getCount();
@@ -76,7 +78,7 @@ public class TestMySqlTunesDaoImpl {
 	}
 
 	@Test
-	public void testGetTuneById() {
+	public void testGetTuneById() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoTunes();
 		testTuneDto = TestDaoHelper.tuneDaoImpl
 				.getTuneById(TestDaoHelper.tuneStuttgartId);
@@ -86,7 +88,7 @@ public class TestMySqlTunesDaoImpl {
 	}
 
 	@Test
-	public void testGetTunesByName() {
+	public void testGetTunesByName() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoTunes();
 		testTuneDto = TestDaoHelper.tuneDaoImpl
 				.getTuneByName(TestDaoHelper.tuneStuttgartDto.getName());
@@ -96,7 +98,7 @@ public class TestMySqlTunesDaoImpl {
 	}
 
 	@Test
-	public void testGetTunesByMeter() {
+	public void testGetTunesByMeter() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoTunes();
 		tunes = TestDaoHelper.tuneDaoImpl
 				.getTunesByMeter(TestDaoHelper.tuneStuttgartDto.getMeterId());
@@ -109,7 +111,7 @@ public class TestMySqlTunesDaoImpl {
 	}
 
 	@Test
-	public void testGetTunesByAuthor() {
+	public void testGetTunesByAuthor() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoTunes();
 		tunes = TestDaoHelper.tuneDaoImpl
 				.getTunesByAuthor(TestDaoHelper.tuneStuttgartDto.getAuthorId());
@@ -122,7 +124,7 @@ public class TestMySqlTunesDaoImpl {
 	}
 
 	@Test
-	public void testGetAll() {
+	public void testGetAll() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoTunes();
 		tunes = TestDaoHelper.tuneDaoImpl.getAll();
 		assertTrue(MessageUtils.getMessage("ju", "dao.getall.fail", tableName),
@@ -130,7 +132,7 @@ public class TestMySqlTunesDaoImpl {
 	}
 
 	@Test
-	public void testDeleteAll() {
+	public void testDeleteAll() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoTunes();
 		TestDaoHelper.tuneDaoImpl.deleteAll();
 		assertTrue(
@@ -139,7 +141,7 @@ public class TestMySqlTunesDaoImpl {
 	}
 
 	@Test
-	public void testGetCount() {
+	public void testGetCount() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoTunes();
 		int count = TestDaoHelper.tuneDaoImpl.getCount();
 		assertTrue(
@@ -148,7 +150,7 @@ public class TestMySqlTunesDaoImpl {
 	}
 
 	@Test
-	public void testLookupTunes() {
+	public void testLookupTunes() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTunesLookup();
 		LinkedHashMap<Integer, String> map = TestDaoHelper.tuneDaoImpl
 				.getTunesLookup();
@@ -161,7 +163,7 @@ public class TestMySqlTunesDaoImpl {
 	}
 
 	@Test
-	public void testWholeLookup() {
+	public void testWholeLookup() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoWholeTunes();
 		tunes = TestDaoHelper.tuneDaoImpl.getWholeTunes();
 		// Got right size

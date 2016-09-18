@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 @Service("meterServiceImpl")
 public class MeterServiceImpl implements MeterService {
 
@@ -18,10 +20,14 @@ public class MeterServiceImpl implements MeterService {
 
 	@Override
 	public int save(MeterDto dto) {
-		if (dto.getId() != 0) {
-			meterDaoImpl.update(dto);
-		} else {
-			meterDaoImpl.add(dto);
+		try {
+			if (dto.getId() != 0) {
+				meterDaoImpl.update(dto);
+			} else {
+				meterDaoImpl.add(dto);
+			}
+		} catch (MySQLIntegrityConstraintViolationException ex) {
+			return Constants.DB_INTEGERITY_CONSTRAINT_VIOLATION_EXCEPTION_RETVALUE;
 		}
 		return 0;
 	}
@@ -31,7 +37,7 @@ public class MeterServiceImpl implements MeterService {
 		try {
 			return meterDaoImpl.delete(id);
 		} catch (DataIntegrityViolationException e) {
-			return Constants.DB_DATAINTEGRITYVIOLATIONEXCEPTION_RETVALUE;
+			return Constants.DB_DATA_INTEGRITY_VIOLATION_EXCEPTION_RETVALUE;
 		}
 	}
 

@@ -6,7 +6,7 @@
 		<c:forEach items="${menu}" var="menu">
 			<li><p class="menuListActive">
 					<c:choose>
-						<c:when test="${menu.key.equals(hold)}">
+						<c:when test="${menu.key.equals(active)}">
 							<b><i>${menu.value}</i></b>
 						</c:when>
 						<c:otherwise>

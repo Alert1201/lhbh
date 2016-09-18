@@ -70,7 +70,7 @@ public class MySqlTuneDaoImpl implements TunesDAO {
 			namedParameters.addValue("id", id);
 			return namedParameterJdbcTemplate.update(sql, namedParameters);
 		} catch (DataIntegrityViolationException e) {
-			return Constants.DB_DATAINTEGRITYVIOLATIONEXCEPTION_RETVALUE;
+			return Constants.DB_DATA_INTEGRITY_VIOLATION_EXCEPTION_RETVALUE;
 		}
 	}
 

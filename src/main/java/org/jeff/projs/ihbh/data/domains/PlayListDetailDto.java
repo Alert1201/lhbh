@@ -9,15 +9,19 @@ public class PlayListDetailDto implements BaseDto {
 	int id;
 	int playListId;
 	int hymnId;
-	String part;
-	String type;
+	int part;
+	int type;
 		
-	public PlayListDetailDto(int playListId, int hymnId, String part, String type) {
+	public PlayListDetailDto(int playListId, int hymnId, int part, int type) {
 		super();
 		this.playListId = playListId;
 		this.hymnId = hymnId;
 		this.part = part;
 		this.type = type;
+	}
+
+	public PlayListDetailDto() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getId() {
@@ -44,19 +48,19 @@ public class PlayListDetailDto implements BaseDto {
 		this.hymnId = hymnId;
 	}
 
-	public String getPart() {
+	public int getPart() {
 		return part;
 	}
 
-	public void setPart(String part) {
+	public void setPart(int part) {
 		this.part = part;
 	}
 
-	public String getType() {
+	public int getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 

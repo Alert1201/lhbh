@@ -100,7 +100,7 @@ public class  ApplicationConfig {
 		datasource.setUsername("dev");
 		datasource.setPassword("");
 		datasource.setInitialSize(2);
-		datasource.setMaxTotal(5);
+		datasource.setMaxTotal(15);
 		return datasource;
 	}
 

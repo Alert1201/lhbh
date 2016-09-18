@@ -10,6 +10,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 
 	List<HymnDto> hymns;
@@ -22,7 +24,7 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testAdd() {
+	public void testAdd() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoTunes();
 		TestDaoHelper.addTwoHymnAuthors();
 		TestDaoHelper.addTwoHymnals();
@@ -48,7 +50,7 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testDelete() {
+	public void testDelete() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoHymns();
 
 		TestDaoHelper.hymnDaoImpl.delete(TestDaoHelper.hymnAndCanId);
@@ -61,7 +63,7 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testGetHymnById() {
+	public void testGetHymnById() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoHymns();
 		testHymnDto = TestDaoHelper.hymnDaoImpl
 				.getHymnById(TestDaoHelper.hymnHowGrId);
@@ -71,7 +73,7 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testGetCount() {
+	public void testGetCount() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoHymns();
 		assertTrue(
 				MessageUtils.getMessage("ju", "dao.getcount.fail", tableName),
@@ -80,7 +82,7 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testGetHymnsByAuthor() {
+	public void testGetHymnsByAuthor() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoHymns();
 		hymns = TestDaoHelper.hymnDaoImpl
 				.getHymnsByAuthor(TestDaoHelper.authorHymnBettyId);
@@ -100,7 +102,7 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testGetHymnsByTitle() {
+	public void testGetHymnsByTitle() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoHymns();
 		hymns = TestDaoHelper.hymnDaoImpl.getHymnsByTitle(TestDaoHelper.hymnAndCanDto
 				.getTitle());
@@ -109,7 +111,7 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testGetHymnsByTitleMany() {
+	public void testGetHymnsByTitleMany() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoHymns();
 		TestDaoHelper.hymnDaoImpl.add(new HymnDto(TestDaoHelper.hymnalTrinityId, TestDaoHelper.tuneStuttgartId,"Test AND1 with","First AND3", TestDaoHelper.authorHymnBettyId, "3333", 545));
 		TestDaoHelper.hymnDaoImpl.add(new HymnDto(TestDaoHelper.hymnalTrinityId, TestDaoHelper.tuneStuttgartId,"Test AND2 with","First line and4", TestDaoHelper.authorHymnJoeId, "4444", 566));
@@ -119,7 +121,7 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 	}
 	
 	@Test
-	public void testGetHymnsByFirstLine() {
+	public void testGetHymnsByFirstLine() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoHymns();
 		
 		TestDaoHelper.hymnDaoImpl.add(new HymnDto(TestDaoHelper.hymnalTrinityId, TestDaoHelper.tuneStuttgartId, "Test AND1 with","First AND3", TestDaoHelper.authorHymnBettyId, "3333", 545));
@@ -130,7 +132,7 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testGetHymnsByFirstLineMany() {
+	public void testGetHymnsByFirstLineMany() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoHymns();
 		hymns = TestDaoHelper.hymnDaoImpl
 				.getHymnsByFirstLine(TestDaoHelper.hymnAndCanDto.getFirstLine());
@@ -140,7 +142,7 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 
 	
 	@Test
-	public void testGetHymnByHymnalNumber() {
+	public void testGetHymnByHymnalNumber() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoHymns();
 		testHymnDto = TestDaoHelper.hymnDaoImpl.getHymnByHymnalNumber(
 				TestDaoHelper.hymnalTrinityId,
@@ -151,7 +153,7 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testGetHymnsByTune() {
+	public void testGetHymnsByTune() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoHymns();
 		hymns = TestDaoHelper.hymnDaoImpl.getHymnsByTune(TestDaoHelper.tuneLastUnsId);
 		assertTrue(MessageUtils.getMessage("ju", "dao.getByTune.fail",
@@ -159,7 +161,7 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testGetAll() {
+	public void testGetAll() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoHymns();
 		List<HymnDto> hymn = TestDaoHelper.hymnDaoImpl.getAll();
 		assertTrue(MessageUtils.getMessage("ju", "dao.getall.fail", tableName),
@@ -167,7 +169,7 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testDeleteAll() {
+	public void testDeleteAll() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoHymns();
 		TestDaoHelper.hymnDaoImpl.deleteAll();
 		assertTrue(
@@ -176,7 +178,7 @@ public class TestMySqlHymnDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testUpdate() {
+	public void testUpdate() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoHymns();
 		TestDaoHelper.hymnUpdateDto.setId(TestDaoHelper.hymnAndCanId);
 		TestDaoHelper.hymnDaoImpl.add(new HymnDto(TestDaoHelper.hymnalTrinityId, 

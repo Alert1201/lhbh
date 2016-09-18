@@ -21,7 +21,8 @@ import org.jeff.projs.ihbh.data.daos.TestMySqlUsersDaoImpl;
 	TestMySqlUserTypesDaoImpl.class,
 	TestMySqlUsersDaoImpl.class,
 	TestMySqlHymnDaoImpl.class,
-	TestMySqlPlayListDaoImpl.class
+	TestMySqlPlayListDaoImpl.class,
+	TestMySqlPlayListDetailDaoImpl.class
 })
 public class TestDaoSuite {   
 } 

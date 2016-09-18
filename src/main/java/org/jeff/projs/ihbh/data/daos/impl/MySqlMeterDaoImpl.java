@@ -19,6 +19,8 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 @Repository("meterDaoImpl")
 public class MySqlMeterDaoImpl implements MeterDAO {
 
@@ -29,14 +31,14 @@ public class MySqlMeterDaoImpl implements MeterDAO {
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 	@Override
-	public int add(MeterDto dto) {
+	public int add(MeterDto dto) throws MySQLIntegrityConstraintViolationException {
 		String sql = "Insert into meter (meter, description) " + "values (:meter, :description)";
 		MapSqlParameterSource namedParameters = setNamedParameter(dto);
 		return namedParameterJdbcTemplate.update(sql, namedParameters);
 	}
 
 	@Override
-	public int update(MeterDto dto) {
+	public int update(MeterDto dto) throws MySQLIntegrityConstraintViolationException {
 		String sql = "update meter SET meter = :meter " + ", description = :description" + " where id = " + dto.getId();
 		MapSqlParameterSource namedParameters = setNamedParameter(dto);
 		return namedParameterJdbcTemplate.update(sql, namedParameters);

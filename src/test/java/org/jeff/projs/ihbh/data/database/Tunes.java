@@ -7,10 +7,12 @@ import org.jeff.projs.ihbh.data.domains.TuneDto;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 public class Tunes {
 
 	//get Author ids
-	public static void main(String[] args){
+	public static void main(String[] args) throws MySQLIntegrityConstraintViolationException{
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(
 				"test-application-context.xml");
 		MySqlAuthorDaoImpl authorsDaoImpl = ctx.getBean(MySqlAuthorDaoImpl.class);

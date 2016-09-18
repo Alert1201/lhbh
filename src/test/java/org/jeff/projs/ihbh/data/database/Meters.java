@@ -5,10 +5,12 @@ import org.jeff.projs.ihbh.data.domains.MeterDto;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 public class Meters {
 	
 	
-	public static void main(String[] args){
+	public static void main(String[] args) throws MySQLIntegrityConstraintViolationException{
 		@SuppressWarnings("resource")
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(
 				"test-application-context.xml");

@@ -10,6 +10,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 public class TestMySqlMeterDaoImpl implements TestDaoImpls {
 
 	Object[] tableName = new Object[] { "METER" };
@@ -21,7 +23,7 @@ public class TestMySqlMeterDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testAdd() {
+	public void testAdd() throws MySQLIntegrityConstraintViolationException {
 		
 		// Test Add
 		TestDaoHelper.meterDaoImpl.add(TestDaoHelper.meter8Dto);
@@ -40,7 +42,7 @@ public class TestMySqlMeterDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testGetAll() {
+	public void testGetAll() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoMeters();
 		List<MeterDto> meter = TestDaoHelper.meterDaoImpl.getAll();
 		assertTrue(MessageUtils.getMessage("ju", "dao.getall.fail", tableName),
@@ -48,7 +50,7 @@ public class TestMySqlMeterDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testGetCount() {
+	public void testGetCount() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoMeters();
 		assertTrue(
 				MessageUtils.getMessage("ju", "dao.getcount.fail", tableName),
@@ -56,7 +58,7 @@ public class TestMySqlMeterDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testGetMeterByMeter() {
+	public void testGetMeterByMeter() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoMeters();
 		testMeterDto = TestDaoHelper.meterDaoImpl
 				.getMeterByMeter(TestDaoHelper.meter8Dto.getMeter());
@@ -65,7 +67,7 @@ public class TestMySqlMeterDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testGetMeterById() {
+	public void testGetMeterById() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoMeters();
 		testMeterDto = TestDaoHelper.meterDaoImpl
 				.getMeterById(TestDaoHelper.meter8Id);
@@ -75,7 +77,7 @@ public class TestMySqlMeterDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testUpdate() {
+	public void testUpdate() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoMeters();
 		TestDaoHelper.updateMeterXDto.setId(TestDaoHelper.meter8Id);
 		TestDaoHelper.meterDaoImpl.update(TestDaoHelper.updateMeterXDto);
@@ -87,7 +89,7 @@ public class TestMySqlMeterDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testDeleteAll() {
+	public void testDeleteAll() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoMeters();
 		TestDaoHelper.meterDaoImpl.deleteAll();
 		assertTrue(
@@ -96,7 +98,7 @@ public class TestMySqlMeterDaoImpl implements TestDaoImpls {
 	}
 
 	@Test
-	public void testDelete() {
+	public void testDelete() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTwoMeters();
 		
 		TestDaoHelper.meterDaoImpl.delete(TestDaoHelper.meter8Id);

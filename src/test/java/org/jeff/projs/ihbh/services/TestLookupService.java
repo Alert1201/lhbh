@@ -12,6 +12,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
+
 public class TestLookupService {
 
 	@Before
@@ -36,7 +38,7 @@ public class TestLookupService {
 	}
 
 	@Test
-	public void testPopulateMeters() {
+	public void testPopulateMeters() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addMeterLookup();
 		LinkedHashMap<Integer, String> map = (LinkedHashMap<Integer, String>) TestDaoHelper.lookupServiceImpl
 				.populateMeters();
@@ -51,7 +53,7 @@ public class TestLookupService {
 	}
 
 	@Test
-	public void testPopulateTunes() {
+	public void testPopulateTunes() throws MySQLIntegrityConstraintViolationException {
 		TestDaoHelper.addTunesLookup();
 		LinkedHashMap<Integer, String> map = (LinkedHashMap<Integer, String>) TestDaoHelper.lookupServiceImpl
 				.populateTunes();

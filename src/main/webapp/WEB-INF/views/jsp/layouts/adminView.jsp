@@ -18,7 +18,37 @@
  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- ********************************************************************* -->
 
+<style>
+#errorMessage {
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 5px;
+  	float:left; width:97%;
+    background-color:red;
+}
+#messageButtonShow{
+	float:left;
+	padding-top: 7px;
+	padding-left: 7px;
+	width:3%;
+}
 
+#warningMessage {
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 5px;
+  	float:left; width:97%;
+    background-color:yellow;
+}
+
+#infoMessage {
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 5px;
+  	float:left; width:97%;
+  	background-color:green;
+}
+</style>
 <link
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"
 	rel="stylesheet" />
@@ -29,6 +59,7 @@
 <!-- Custom CSS -->
 <link href="${contextPath}/resources/css/styles.css" rel="stylesheet">
 <link href="${contextPath}/resources/css/public.css" rel="stylesheet">
+<link href="${contextPath}/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 </script>
 <!-- Include Modernizr in the head, before any other Javascript -->
 <script
@@ -36,13 +67,22 @@
 </script>
 
 <tiles:insertAttribute name="table" />
-<!-- Display messages -->
-<script type="text/javascript">
-$( document ).ready(function() {
 
-	
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#hide").click(function(){
+    	if ( $("[id$=Message]").is( ":hidden" ) ) {
+    	    $("[id$=Message]").show(1000);
+    	    $(".fa-toggle-off").attr("title", "Hide Message");
+    	} else {
+    		$( "[id$=Message]").hide(1000);
+    		$(".fa-toggle-on").attr("title", "Show Message");
+    	}
+    	$(".fa-toggle-off, .fa-toggle-on").toggleClass("fa-toggle-off fa-toggle-on")
+    	fa-toggle-off
+    });
+   
 });
- 
 
 </script>
 <style>
