@@ -4,7 +4,8 @@ $(function() {
     // init the tree
     $('#tree').aciTree({
         ajax: {
-            url: "../resources/json/sample.json"
+    //    url: "../resources/json/sample2.json"
+        url: "/lhbh/categories/getTree"
         },
         selectable: true
     });

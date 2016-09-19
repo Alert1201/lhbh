@@ -125,24 +125,10 @@ public class Categories {
 		categoryDaoImpl.add(level3bParLevel2b);
 	}
 		
-	public static List<CategoryDto> recursive(CategoryTree tree, int parentId){
-		List<CategoryDto> retList = categoryDaoImpl.getChildrenByParentId(parentId);
-		if(retList==null || retList.size()==0)
-			return null;
-		else{
-			for (CategoryDto categoryDto : retList) {
-				tree.add(categoryDto);
-				System.out.println(tree);
-				recursive(tree, categoryDto.getId() );
-			}
-		}
-		return retList;
-	}
-	
 	public static void main(String[] args){
 		loadTable();
 		CategoryTree tree = new CategoryTree();
-		recursive(tree, 0);
+		categoryDaoImpl.recursive(tree, 0);
 	}
 
 }

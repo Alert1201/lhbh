@@ -9,6 +9,8 @@ import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 import org.jeff.projs.ihbh.data.daos.CategoryDAO;
 import org.jeff.projs.ihbh.data.domains.CategoryDto;
+import org.jeff.projs.ihbh.data.domains.TreeNodeDto;
+import org.jeff.projs.ihbh.utils.CategoryTree;
 import org.jeff.projs.ihbh.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -116,6 +118,34 @@ public class MySqlCategoryDaoImpl implements CategoryDAO {
 		return num;
 	}
 
+	
+	
+	public List<CategoryDto> recursive(CategoryTree tree, int parentId){
+		List<CategoryDto> retList = getChildrenByParentId(parentId);
+		if(retList==null || retList.size()==0)
+			return null;
+		else{
+			for (CategoryDto categoryDto : retList) {
+				tree.add(categoryDto);
+				recursive(tree, categoryDto.getId() );
+			}
+		}
+		return retList;
+	}
+	
+	public List<CategoryDto> buildJsonTree(TreeNodeDto treeNodeDto, int parentId){
+		List<CategoryDto> retList = getChildrenByParentId(parentId);
+		if(retList==null || retList.size()==0)
+			return null;
+		else{
+			for (CategoryDto categoryDto : retList) {
+	//			tree.add(categoryDto);
+	//			recursive(tree, categoryDto.getId() );
+			}
+		}
+		return retList;
+	}
+	
 	private MapSqlParameterSource setNamedParameter(CategoryDto dto) {
 		// First value parameter is from field name of Dto.
 		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
@@ -149,5 +179,11 @@ public class MySqlCategoryDaoImpl implements CategoryDAO {
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+	}
+
+	@Override
+	public List<TreeNodeDto> getChildrenByParentIdForTreeNode(int parId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
