@@ -1,12 +1,13 @@
-        <div id="page">
 
-Categories View
+<div id="page">
 
- <p>A demo to show how you can use the aciTree API (read below).</p>
+	Categories View
 
-          
 
-            <div id="tree" class="aciTree"><div>
-				<br>Sample tree</div></div>
-            <br />
-      </div>
+	<div id="tree" class="aciTree">
+		<div>
+			<br>Sample tree
+		</div>
+	</div>
+	<br />
+</div>
