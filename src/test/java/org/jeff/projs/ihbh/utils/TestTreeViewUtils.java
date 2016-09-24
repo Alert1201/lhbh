@@ -34,7 +34,6 @@ public class TestTreeViewUtils {
 		TreeNodeDto testTreeNodeDto = new TreeNodeDto();
 		testTreeNodeDto = TreeViewUtils.convCategoryDtoToTreeNode(categoryDto);
 		testForEqual(testTreeNodeDto, categoryDto);
-
 	}
 	
 	@Test

@@ -1,13 +1,11 @@
 
 <div id="page">
-
-	Categories View
-
-
+<br/>
+<div style="width:500px; height:500px; border-style: solid; margins:10px; overflow: auto;" >
 	<div id="tree" class="aciTree">
 		<div>
-			<br>Sample tree
+			Categories
 		</div>
 	</div>
-	<br />
+	</div>
 </div>

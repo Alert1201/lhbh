@@ -12,6 +12,7 @@ import org.jeff.projs.ihbh.data.domains.CategoryDto;
 import org.jeff.projs.ihbh.data.domains.TreeNodeDto;
 import org.jeff.projs.ihbh.utils.CategoryTree;
 import org.jeff.projs.ihbh.utils.Constants;
+import org.jeff.projs.ihbh.utils.TreeViewUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -116,34 +117,6 @@ public class MySqlCategoryDaoImpl implements CategoryDAO {
 		String sql = "SELECT COUNT(*) FROM category";
 		int num = jdbcTemplate.queryForObject(sql, Integer.class);
 		return num;
-	}
-
-	
-	
-	public List<CategoryDto> recursive(CategoryTree tree, int parentId){
-		List<CategoryDto> retList = getChildrenByParentId(parentId);
-		if(retList==null || retList.size()==0)
-			return null;
-		else{
-			for (CategoryDto categoryDto : retList) {
-				tree.add(categoryDto);
-				recursive(tree, categoryDto.getId() );
-			}
-		}
-		return retList;
-	}
-	
-	public List<CategoryDto> buildJsonTree(TreeNodeDto treeNodeDto, int parentId){
-		List<CategoryDto> retList = getChildrenByParentId(parentId);
-		if(retList==null || retList.size()==0)
-			return null;
-		else{
-			for (CategoryDto categoryDto : retList) {
-	//			tree.add(categoryDto);
-	//			recursive(tree, categoryDto.getId() );
-			}
-		}
-		return retList;
 	}
 	
 	private MapSqlParameterSource setNamedParameter(CategoryDto dto) {

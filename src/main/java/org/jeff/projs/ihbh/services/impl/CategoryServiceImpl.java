@@ -1,11 +1,14 @@
 package org.jeff.projs.ihbh.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.jeff.projs.ihbh.data.daos.impl.MySqlCategoryDaoImpl;
 import org.jeff.projs.ihbh.data.domains.CategoryDto;
+import org.jeff.projs.ihbh.data.domains.TreeNodeDto;
 import org.jeff.projs.ihbh.services.CategoryService;
 import org.jeff.projs.ihbh.utils.CategoryTree;
+import org.jeff.projs.ihbh.utils.TreeViewUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,7 +63,7 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryDaoImpl.getCount();
 	}
 
-	@Override
+	
 	public CategoryTree getTree() {
 		CategoryTree tree = new CategoryTree();
 		getChildrenRecursively(tree, 0);
@@ -81,4 +84,33 @@ public class CategoryServiceImpl implements CategoryService {
 		}
 		return retList;
 	}
+
+	@Override
+	public List<TreeNodeDto> buildJsonTree(List<TreeNodeDto> tree, int parentId){
+		List<CategoryDto> retList = categoryDaoImpl.getChildrenByParentId(parentId);
+		if(retList==null || retList.size()==0)
+			return null;
+		else{
+			for (CategoryDto categoryDto : retList) {
+				TreeNodeDto dto = new TreeNodeDto();
+				dto = TreeViewUtils.convCategoryDtoToTreeNode(categoryDto);
+				List<TreeNodeDto> treeTemp = new ArrayList<TreeNodeDto>();
+				dto.setBranch(buildJsonTree(treeTemp, categoryDto.getId()));
+				if(dto.getBranch() != null && dto.getBranch().size()>0){
+					dto.setInode(true);
+				}
+				tree.add(dto);
+			}
+		}
+		return tree;
+	}
+	
+	@Override
+	public CategoryTree buildCategoryTree(CategoryTree tree, int parentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
 }

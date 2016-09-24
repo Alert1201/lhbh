@@ -16,7 +16,7 @@ public class Categories {
 	
 	// Category DTO Setup
 		
-	public static void loadTable(){
+	public static void loadAll(){
 		categoryDaoImpl.deleteAll();
 		CategoryDto level1NoPar1 = new CategoryDto(
 				"God: His Being, Works and Word",0, 1, 1);
@@ -124,11 +124,30 @@ public class Categories {
 		categoryDaoImpl.add(level3aParLevel2b);
 		categoryDaoImpl.add(level3bParLevel2b);
 	}
+	
+	public static void loadFirstLevel(){
+		categoryDaoImpl.deleteAll();
+		CategoryDto level1NoPar1 = new CategoryDto(
+				"God: His Being, Works and Word",0, 1, 1);
 		
-	public static void main(String[] args){
-		loadTable();
-		CategoryTree tree = new CategoryTree();
-		categoryDaoImpl.recursive(tree, 0);
-	}
+		CategoryDto level1NoPar2 = 
+				new CategoryDto("The Church",0, 2, 1);
+		
+		CategoryDto level1NoPar3 = 
+				new CategoryDto("The Christian Life",0, 3, 1);
 
+		CategoryDto level1NoPar4 = 
+				new CategoryDto("Occasional Hymns",0, 4, 1);
+
+		// *********** Add First Level
+		categoryDaoImpl.add(level1NoPar1); // Add Parent
+		categoryDaoImpl.add(level1NoPar2);
+		categoryDaoImpl.add(level1NoPar3);
+		categoryDaoImpl.add(level1NoPar4);
+	}
+	
+	static public void main(String[] args){
+		loadAll();
+	}
+	
 }
