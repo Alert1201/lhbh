@@ -28,11 +28,21 @@ public class CategoryServiceImpl implements CategoryService {
 		return 0;
 	}
 
+	public void removeTreeViewNode(int id, int parId, int order){
+		categoryDaoImpl.delete(id);
+		 List<CategoryDto> list = categoryDaoImpl.getChildrenByParentIdByOrder(parId, order);
+		 for(CategoryDto dto : list){
+			 dto.setListOrder(order++);
+			 categoryDaoImpl.update(dto);
+		 }
+		
+	}
+	
 	@Override
 	public int delete(CategoryDto dto) {
 		return categoryDaoImpl.delete(dto.getId());
 	}
-
+	
 	@Override
 	public CategoryDto getById(CategoryDto dto) {
 		return categoryDaoImpl.getCategoryById(dto.getId());
@@ -86,7 +96,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public List<TreeNodeDto> buildJsonTree(List<TreeNodeDto> tree, int parentId){
+	public List<TreeNodeDto> buildJsonTree(List<TreeNodeDto> tree, int parentId, boolean expand){
 		List<CategoryDto> retList = categoryDaoImpl.getChildrenByParentId(parentId);
 		if(retList==null || retList.size()==0)
 			return null;
@@ -95,9 +105,11 @@ public class CategoryServiceImpl implements CategoryService {
 				TreeNodeDto dto = new TreeNodeDto();
 				dto = TreeViewUtils.convCategoryDtoToTreeNode(categoryDto);
 				List<TreeNodeDto> treeTemp = new ArrayList<TreeNodeDto>();
-				dto.setBranch(buildJsonTree(treeTemp, categoryDto.getId()));
+				dto.setBranch(buildJsonTree(treeTemp, categoryDto.getId(), expand));
 				if(dto.getBranch() != null && dto.getBranch().size()>0){
 					dto.setInode(true);
+					//if node, expand
+					dto.setOpen(expand);
 				}
 				tree.add(dto);
 			}

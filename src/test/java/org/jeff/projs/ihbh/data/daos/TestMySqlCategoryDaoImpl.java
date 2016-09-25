@@ -24,7 +24,14 @@ public class TestMySqlCategoryDaoImpl {
 	public static void beforeClass() throws Exception {
 		TestDaoHelper.categoryDaoImpl.deleteAll();
 	}
+	
+	// No test for this one
+	@Test
+	public void getChildrenByParentIdByOrder(){
 
+		
+	}
+	
 	@Test
 	public void testAdd() {
 		TestDaoHelper.categoryDaoImpl.add(TestDaoHelper.level1NoPar1);

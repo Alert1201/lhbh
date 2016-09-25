@@ -60,9 +60,12 @@
 <link href="${contextPath}/resources/css/styles.css" rel="stylesheet">
 <link href="${contextPath}/resources/css/public.css" rel="stylesheet">
 <link href="${contextPath}/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="${contextPath}/resources/contextMenu/jquery.contextMenu.css" media="all">
 <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/aciTree.css" media="all">
 <script type="text/javascript" src="${contextPath}/resources/js/jquery.aciPlugin.min.js"></script>
 <script type="text/javascript" src="${contextPath}/resources/js/jquery.aciTree.min.js"></script>
+ <script type="text/javascript" src="${contextPath}/resources/contextMenu/jquery.contextMenu.js"></script>
+
 </script>
 <!-- Include Modernizr in the head, before any other Javascript -->
 <script

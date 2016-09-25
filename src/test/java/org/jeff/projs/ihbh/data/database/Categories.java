@@ -1,10 +1,8 @@
 package org.jeff.projs.ihbh.data.database;
 
-import java.util.List;
 
 import org.jeff.projs.ihbh.data.daos.impl.MySqlCategoryDaoImpl;
 import org.jeff.projs.ihbh.data.domains.CategoryDto;
-import org.jeff.projs.ihbh.utils.CategoryTree;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -34,6 +32,14 @@ public class Categories {
 						new CategoryDto("His Deity",0, 1, 3);
 		CategoryDto level3bParLevel2c = 
 						new CategoryDto("His Praise",0, 2, 3);
+		CategoryDto level3cParLevel2c = 
+				new CategoryDto("His Love and Grace",0, 3, 3);
+		CategoryDto level3dParLevel2c = 
+				new CategoryDto("His Advent",0, 4, 3);
+		CategoryDto level3eParLevel2c = 
+				new CategoryDto("His Birth",0, 5, 3);
+		CategoryDto level3fParLevel2c = 
+				new CategoryDto("His Death",0, 6, 3);
 		
 		CategoryDto level1NoPar2 = 
 				new CategoryDto("The Church",0, 2, 1);
@@ -94,10 +100,18 @@ public class Categories {
 		// Set parids for level 2c - No 2b
 		level3aParLevel2c.setParId(parentDto.getId());
 		level3bParLevel2c.setParId(parentDto.getId());
+		level3cParLevel2c.setParId(parentDto.getId());
+		level3dParLevel2c.setParId(parentDto.getId());
+		level3eParLevel2c.setParId(parentDto.getId());
+		level3fParLevel2c.setParId(parentDto.getId());
 
 		// Add um
 		categoryDaoImpl.add(level3aParLevel2c);
 		categoryDaoImpl.add(level3bParLevel2c);
+		categoryDaoImpl.add(level3cParLevel2c);
+		categoryDaoImpl.add(level3dParLevel2c);
+		categoryDaoImpl.add(level3eParLevel2c);
+		categoryDaoImpl.add(level3fParLevel2c);
 
 		categoryDaoImpl.add(level1NoPar2);
 		// Get parent ID of first level 2 - The Church

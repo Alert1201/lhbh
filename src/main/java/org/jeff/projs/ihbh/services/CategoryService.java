@@ -15,6 +15,6 @@ public interface CategoryService {
 	public List<CategoryDto> getChildrenByParentName(CategoryDto  dto);
 	public List<CategoryDto> getAll();
 	public CategoryTree buildCategoryTree(CategoryTree tree, int parentId);
-	public List<TreeNodeDto> buildJsonTree(List<TreeNodeDto> tree, int parentId);
+	public List<TreeNodeDto> buildJsonTree(List<TreeNodeDto> tree, int parentId, boolean expand);
 	public int getCount();
 }

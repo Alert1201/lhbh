@@ -40,6 +40,10 @@ public class MySqlCategoryDaoImpl implements CategoryDAO {
 		return namedParameterJdbcTemplate.update(sql, namedParameters);
 	}
 
+	public void updateLevels(int parId, int level){
+		
+	}
+	
 	@Override
 	// Update the row where id = id with the dto.
 	public int update(CategoryDto dto) {
@@ -91,6 +95,15 @@ public class MySqlCategoryDaoImpl implements CategoryDAO {
 		return namedParameterJdbcTemplate.query(sql, namedParameters, new CategoryMapper());
 	}
 
+	@Override
+	public List<CategoryDto> getChildrenByParentIdByOrder(int parId, int listOrder) {
+		String sql = "Select * from category where par_id = :parId and list_order > :listOrder order by list_order";
+		MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+		namedParameters.addValue("parId", parId);
+		namedParameters.addValue("listOrder", listOrder);
+		return namedParameterJdbcTemplate.query(sql, namedParameters, new CategoryMapper());
+	}
+	
 	@Override
 	public List<CategoryDto> getChildrenByParentName(String parentName) {
 		String sql = "Select * from category where par_id IN "

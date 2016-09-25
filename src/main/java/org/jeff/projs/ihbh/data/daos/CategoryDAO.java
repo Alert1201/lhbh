@@ -17,4 +17,5 @@ public interface CategoryDAO {
 	public int deleteAll();
 	public int getCount();
 	List<TreeNodeDto> getChildrenByParentIdForTreeNode(int parId);
+	List<CategoryDto> getChildrenByParentIdByOrder(int parId, int listOrder);
 }
